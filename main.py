@@ -117,6 +117,21 @@ def dashboard():
     # Passing the name from the current_user
     return render_template("dashboard.html", name=current_user.name, logged_in=True)
 
+@app.route("/klasifikasi_baru")
+@login_required
+def klasifikasi_baru():
+    print(current_user.name)
+    # Passing the name from the current_user
+    return render_template("klasifikasi_baru.html", name=current_user.name, logged_in=True)
+
+@app.route("/riwayat_klasifikasi")
+@login_required
+def riwayat_klasifikasi():
+    print(current_user.name)
+    # Passing the name from the current_user
+    return render_template("riwayat_klasifikasi.html", name=current_user.name, logged_in=True)
+
+
 @app.route('/logout')
 def logout():
     logout_user()
