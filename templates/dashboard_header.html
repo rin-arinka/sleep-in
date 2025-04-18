@@ -160,13 +160,13 @@
               </a>
             </li>
             <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link">
+              <a href="{{ url_for('profile') }}" class="menu-link">
                 <i class='menu-icon tf-icon bx bx-user'></i>
                 <div data-i18n="Authentications">Profil Saya</div>
               </a>
             </li>
             <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link">
+              <a href="{{ url_for('bantuan') }}" class="menu-link">
                  <i class='menu-icon tf-icon bx bx-help-circle'></i>
                 <div data-i18n="Misc">Bantuan</div>
               </a>
@@ -232,15 +232,15 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="{{ url_for('profile') }}">
                         <i class="bx bx-user me-2"></i>
-                        <span class="align-middle">My Profile</span>
+                        <span class="align-middle">Profil Saya</span>
                       </a>
                     </li>
                     <li>
                       <a class="dropdown-item" href="#">
                         <i class="bx bx-cog me-2"></i>
-                        <span class="align-middle">Settings</span>
+                        <span class="align-middle">Pengaturan</span>
                       </a>
                     </li>
                     <li>
