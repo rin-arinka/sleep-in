@@ -21,6 +21,7 @@ class User(UserMixin, db.Model):
     email: Mapped[str] = mapped_column(String(100), unique=True)
     password: Mapped[str] = mapped_column(String(100))
     name: Mapped[str] = mapped_column(String(1000))
+    role: Mapped[str] = mapped_column(String(1000))
 
 with app.app_context():
     db.create_all()
@@ -40,12 +41,12 @@ def home():
 
 @app.route("/about")
 def about():
-    return render_template("about.html", logged_in=current_user.is_authenticated)
+    return render_template("landing-page/about.html", logged_in=current_user.is_authenticated)
 
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html", logged_in=current_user.is_authenticated)
+    return render_template("landing-page/contact.html", logged_in=current_user.is_authenticated)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -67,10 +68,15 @@ def login():
             return redirect(url_for('login'))
         else:
             login_user(user)
-            return redirect(url_for('dashboard'))
+
+            if user.role == 'admin':
+                return redirect(url_for('dashboard_admin'))
+
+            else:
+                return redirect(url_for('dashboard'))
 
     # Passing True or False if the user is authenticated.
-    return render_template("login.html", logged_in=current_user.is_authenticated)
+    return render_template("authentications/login.html", logged_in=current_user.is_authenticated)
 
 @app.route("/sign_up", methods=["GET", "POST"])
 def sign_up():
@@ -96,6 +102,7 @@ def sign_up():
             email=request.form.get('email'),
             name=request.form.get('name'),
             password=hash_and_salted_password,
+            role='user',
         )
 
         db.session.add(new_user)
@@ -107,7 +114,7 @@ def sign_up():
         # Can redirect() and get name from the current_user
         return redirect(url_for("dashboard"))
 
-    return render_template("sign_up.html", logged_in=current_user.is_authenticated)
+    return render_template("authentications/sign_up.html", logged_in=current_user.is_authenticated)
 
 # Only logged-in users can access the route
 @app.route('/dashboard')
@@ -115,21 +122,45 @@ def sign_up():
 def dashboard():
     print(current_user.name)
     # Passing the name from the current_user
-    return render_template("dashboard.html", name=current_user.name, logged_in=True)
+    return render_template("dashboard-user/dashboard.html", name=current_user.name, logged_in=True)
+
+# Only logged-in users can access the route
+@app.route('/dashboard_admin')
+@login_required
+def dashboard_admin():
+    print(current_user.name)
+    # Passing the name from the current_user
+    return render_template("dashboard-admin/dashboard_admin.html", name=current_user.name, logged_in=True)
+
 
 @app.route("/klasifikasi_baru")
 @login_required
 def klasifikasi_baru():
     print(current_user.name)
     # Passing the name from the current_user
-    return render_template("klasifikasi_baru.html", name=current_user.name, logged_in=True)
+    return render_template("dashboard-user/klasifikasi_baru.html", name=current_user.name, logged_in=True)
+
+@app.route("/klasifikasi_admin")
+@login_required
+def klasifikasi_admin():
+    print(current_user.name)
+    # Passing the name from the current_user
+    return render_template("dashboard-admin/klasifikasi_admin.html", name=current_user.name, logged_in=True)
+
 
 @app.route("/riwayat_klasifikasi")
 @login_required
 def riwayat_klasifikasi():
     print(current_user.name)
     # Passing the name from the current_user
-    return render_template("riwayat_klasifikasi.html", name=current_user.name, logged_in=True)
+    return render_template("dashboard-user/riwayat_klasifikasi.html", name=current_user.name, logged_in=True)
+
+@app.route("/riwayat_admin")
+@login_required
+def riwayat_admin():
+    print(current_user.name)
+    # Passing the name from the current_user
+    return render_template("dashboard-admin/riwayat_admin.html", name=current_user.name, logged_in=True)
 
 @app.route("/profile")
 @login_required
@@ -137,14 +168,14 @@ def profile():
     print(current_user.name)
     print(current_user.email)
     # Passing the name and email from the current_user
-    return render_template("profile.html", name=current_user.name, email=current_user.email, logged_in=True)
+    return render_template("dashboard-user/profile.html", name=current_user.name, email=current_user.email, logged_in=True)
 
 @app.route("/bantuan")
 @login_required
 def bantuan():
     print(current_user.name)
     # Passing the name from the current_user
-    return render_template("bantuan.html", name=current_user.name, logged_in=True)
+    return render_template("dashboard-user/bantuan.html", name=current_user.name, logged_in=True)
 
 @app.route('/logout')
 def logout():

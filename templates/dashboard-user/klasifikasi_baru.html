@@ -1,0 +1,136 @@
+          {% include 'dashboard-user/user_header.html' %}
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <h4 class="fw-bold py-3 mb-1">Klasifikasi Baru</h4>
+
+              <!-- Basic Layout & Basic with Icons -->
+              <div class="row">
+                <!-- Basic Layout -->
+                <div class="col-xxl">
+                  <div class="card mb-4">
+                    <div class="card-body">
+                      <form>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label">Jenis Kelamin</label>
+                          <div class="col-sm-10">
+                            <div class>
+                              <select id="defaultSelect" class="form-select">
+                                <option>Pilih Jenis Kelamin</option>
+                                <option value="1">Laki-laki</option>
+                                <option value="2">Perempuan</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-default-company">Usia</label>
+                          <div class="col-sm-10">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="basic-default-company"
+                              placeholder="Masukkan usia Anda"
+                            />
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-default-email">Durasi Tidur (Jam)</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <input
+                                type="text"
+                                id="basic-default-email"
+                                class="form-control"
+                                placeholder="Contoh: 7.5"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label">Kualitas Tidur (1-10)</label>
+                          <div class="col-sm-10">
+                            <input
+                              type="text"
+                              class="form-control phone-mask"
+                              placeholder="1 = Sangat Buruk, 10 = Sangat Baik"
+                            />
+                          </div>
+                        </div>
+                        <div class="row mb-1">
+                          <label class="col-sm-2 col-form-label">Tingkat Aktivitas Fisik (1-10)</label>
+                          <div class="col-sm-10">
+                            <input
+                              type="text"
+                              class="form-control phone-mask"
+                              placeholder="1 = Sangat Buruk, 10 = Sangat Baik"
+                            />
+                          </div>
+                        </div>
+                        <div class="row mb-1">
+                          <label class="col-sm-2 col-form-label">Tingkat Stress </br> (1-10)</label>
+                          <div class="col-sm-10">
+                            <input
+                              type="text"
+                              class="form-control phone-mask"
+                              placeholder="1 = Sangat Buruk, 10 = Sangat Baik"
+                            />
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label">Detak Jantung</label>
+                          <div class="col-sm-10">
+                            <input
+                              type="text"
+                              class="form-control phone-mask"
+                              placeholder="Hitung jumlah denyut dalam 15 detik, dan kalikan dengan empat"
+                            />
+                          </div>
+                        </div>
+                        <div class="row mb-1">
+                          <label class="col-sm-2 col-form-label">Langkah Kaki Harian</label>
+                          <div class="col-sm-10">
+                            <input
+                              type="text"
+                              class="form-control phone-mask"
+                              placeholder="1 km setara dengan sekitar 1.400 langkah kaki"
+                            />
+                          </div>
+                        </div>
+                        <div class="row mb-1">
+                          <label class="col-sm-2 col-form-label">Tekanan Darah Sistolik</label>
+                          <div class="col-sm-10">
+                            <input
+                              type="text"
+                              class="form-control phone-mask"
+                              placeholder="Angka sistolik di kisaran 90 - 119"
+                            />
+                          </div>
+                        </div>
+                        <div class="row mb-2">
+                          <label class="col-sm-2 col-form-label">Tekanan Darah Diastolik</label>
+                          <div class="col-sm-10">
+                            <input
+                              type="text"
+                              class="form-control phone-mask"
+                              placeholder="Angka diastolik di kisaran 60 - 79"
+                            />
+                          </div>
+                        </div>
+                        <div class="row justify-content-end">
+                          <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary">Mulai Klasifikasi</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- / Content -->
+
+            {% include 'dashboard-user/user_footer.html' %}
