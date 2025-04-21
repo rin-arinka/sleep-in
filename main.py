@@ -162,6 +162,20 @@ def riwayat_admin():
     # Passing the name from the current_user
     return render_template("dashboard-admin/riwayat_admin.html", name=current_user.name, logged_in=True)
 
+@app.route("/data_training")
+@login_required
+def data_training():
+    print(current_user.name)
+    # Passing the name from the current_user
+    return render_template("dashboard-admin/data_training.html", name=current_user.name, logged_in=True)
+
+@app.route("/manajemen_pengguna")
+@login_required
+def manajemen_pengguna():
+    print(current_user.name)
+    # Passing the name from the current_user
+    return render_template("dashboard-admin/manajemen_pengguna.html", name=current_user.name, logged_in=True)
+
 @app.route("/profile")
 @login_required
 def profile():
@@ -169,6 +183,15 @@ def profile():
     print(current_user.email)
     # Passing the name and email from the current_user
     return render_template("dashboard-user/profile.html", name=current_user.name, email=current_user.email, logged_in=True)
+
+@app.route("/pengaturan_sistem")
+@login_required
+def pengaturan_sistem():
+    print(current_user.name)
+    print(current_user.email)
+    # Passing the name from the current_user
+    return render_template("dashboard-admin/pengaturan_sistem.html", name=current_user.name, email=current_user.email, logged_in=True)
+
 
 @app.route("/bantuan")
 @login_required

@@ -1,0 +1,115 @@
+          {% include 'dashboard-admin/admin_header.html' %}
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <h4 class="fw-bold py-3 mb-1">Data Training</h4>
+
+              <div class="button-wrapper">
+                          <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+                            <span class="d-none d-sm-block">Tambah Data</span>
+                            <i class="bx bx-upload d-block d-sm-none"></i>
+                            <input
+                              type="file"
+                              id="upload"
+                              class="account-file-input"
+                              hidden
+                              accept="image/png, image/jpeg"
+                            />
+                          </label>
+                          <button type="button" class="btn btn-secondary account-image-reset mb-4">
+                            <i class="bx bx-reset d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Import CSV</span>
+                          </button>
+                        </div>
+              <!-- Basic Bootstrap Table -->
+              <div class="card">
+                <div class="table-responsive text-nowrap">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Usia</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Hasil Klasifikasi</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                      <tr>
+                        <td>101</td>
+                        <td>43</td>
+                        <td>Laki-laki</td>
+                        <td>Normal</td>
+                        <td>
+                          <div class="dropdown">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                              <i class="bx bx-dots-vertical-rounded"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                ><i class="bx bxs-user-detail me-1"></i> Lihat Detail</a
+                              >
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                ><i class="bx bx-trash me-1"></i> Hapus</a
+                              >
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    <tr>
+                        <td>102</td>
+                        <td>29</td>
+                        <td>Laki-laki</td>
+                        <td>Insomnia</td>
+                        <td>
+                          <div class="dropdown">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                              <i class="bx bx-dots-vertical-rounded"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                ><i class="bx bxs-user-detail me-1"></i> Lihat Detail</a
+                              >
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                ><i class="bx bx-trash me-1"></i> Hapus</a
+                              >
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    <tr>
+                        <td>103</td>
+                        <td>37</td>
+                        <td>Perempuan</td>
+                        <td>Sleep Apnea</td>
+                        <td>
+                          <div class="dropdown">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                              <i class="bx bx-dots-vertical-rounded"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                ><i class="bx bxs-user-detail me-1"></i> Lihat Detail</a
+                              >
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                ><i class="bx bx-trash me-1"></i> Hapus</a
+                              >
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!--/ Basic Bootstrap Table -->
+
+              <hr class="my-5" />
+
+            </div>
+            <!-- / Content -->
+
+            {% include 'dashboard-admin/admin_footer.html' %}
