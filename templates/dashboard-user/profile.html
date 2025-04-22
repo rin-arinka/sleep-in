@@ -42,18 +42,33 @@
                         </div>
                       </div>
                     </div>
+                    {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    {% for message in messages %}
+                     <p>{{ message }}</p>
+                    {% endfor %}
+                  {% endif %}
+              {% endwith %}
                     <hr class="my-0" />
                     <div class="card-body">
-                      <form id="formAccountSettings" method="POST" onsubmit="return false">
+                      <form id="formAccountSettings" method="POST" action="{{ url_for('profile') }}">
                         <div class="row">
                           <div class="mb-3 col-md-6">
-                            <label for="firstName" class="form-label">Nama Lengkap</label>
+                            <label class="form-label">Nama Awal</label>
                             <input
                               class="form-control"
                               type="text"
-                              id="firstName"
-                              name="firstName"
-                              value={{name}}
+                              name="nama_awal"
+                              value="{{nama_awal}}"
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label">Nama Akhir</label>
+                            <input
+                              class="form-control"
+                              type="text"
+                              name="nama_akhir"
+                              value="{{nama_akhir}}"
                             />
                           </div>
                           <div class="mb-3 col-md-6">
@@ -68,48 +83,51 @@
                             />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="language" class="form-label">Jenis Kelamin</label>
-                            <select id="language" class="select2 form-select">
+                            <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                            <select id="jenis_kelamin" name="jenis_kelamin" class="select2 form-select" required>
                               <option value="">Pilih Jenis Kelamin</option>
-                              <option value="en">Laki-laki</option>
-                              <option value="fr">Perempuan</option>
+                              <option value="Laki-laki" {% if jenis_kelamin == 'Laki-laki' %}selected{% endif %}>Laki-laki</option>
+                              <option value="Perempuan" {% if jenis_kelamin == 'Perempuan' %}selected{% endif %}>Perempuan</option>
                             </select>
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label class="form-label" for="phoneNumber">Usia</label>
-                            <div class="input-group input-group-merge">
-                              <input
-                                type="text"
-                                name="phoneNumber"
-                                class="form-control"
-                                placeholder="Masukkan usia Anda"
-                              />
-                            </div>
+                            <label for="html5-date-input" class="col-md-3 form-label">Tanggal Lahir</label>
+                              <input class="form-control" type="date" name="tanggal_lahir" value="{{tanggal_lahir}}" id="html5-date-input" />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label">Agama</label>
+                            <input
+                              class="form-control"
+                              type="text"
+                              name="agama"
+                              value={{agama}}
+                              placeholder="Agama"
+                            />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label class="form-label" for="phoneNumber">Nomor Telepon</label>
                             <div class="input-group input-group-merge">
-                              <span class="input-group-text">ID (+62)</span>
                               <input
                                 type="text"
                                 id="phoneNumber"
-                                name="phoneNumber"
+                                name="no_telp"
                                 class="form-control"
-                                placeholder="82 555 011 111"
+                                value={{no_telp}}
+                                placeholder="+6282 555 011 111"
                               />
                             </div>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="address" class="form-label">Alamat</label>
-                            <input type="text" class="form-control" id="address" name="address" placeholder="Alamat" />
+                            <input type="text" class="form-control" id="address" name="alamat" value="{{alamat}}" placeholder="Alamat" />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="address" class="form-label">Kota</label>
-                            <input type="text" class="form-control" name="address" placeholder="Kota" />
+                            <input type="text" class="form-control" name="kota" value="{{kota}}" placeholder="Kota" />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="address" class="form-label">Provinsi</label>
-                            <input type="text" class="form-control" name="address" placeholder="Provinsi" />
+                            <input type="text" class="form-control" name="provinsi" value="{{provinsi}}" placeholder="Provinsi" />
                           </div>
                         </div>
                         <div class="mt-2">
