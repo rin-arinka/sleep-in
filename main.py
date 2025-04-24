@@ -31,7 +31,7 @@ class User(UserMixin, db.Model):
     provinsi: Mapped[str] = mapped_column(String(100))
     role: Mapped[str] = mapped_column(String(1000))
 
-class data_training(UserMixin, db.Model):
+class DataTraining(db.Model):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     jenis_kelamin: Mapped[str] = mapped_column(String(100))
     usia: Mapped[int] = mapped_column(Integer)
@@ -214,7 +214,6 @@ def upload_data_training():
             df = pd.read_csv(file)
             print("CSV berhasil dibaca")
 
-            # Pastikan kolom CSV sesuai dengan model
             expected_columns = [
                 'jenis_kelamin', 'usia', 'durasi_tidur', 'kualitas_tidur', 'tingkat_stres',
                 'detak_jantung', 'langkah_kaki', 'sistolik', 'diastolik', 'gangguan_tidur'
@@ -225,21 +224,29 @@ def upload_data_training():
                 flash("Kolom CSV tidak sesuai.")
                 return redirect(url_for("data_training"))
 
-            # Masukkan ke database
-            for _, row in df.iterrows():
-                entry = data_training(
-                    jenis_kelamin=row['jenis_kelamin'],
-                    usia=int(row['usia']),
-                    durasi_tidur=float(row['durasi_tidur']),
-                    kualitas_tidur=int(row['kualitas_tidur']),
-                    tingkat_stres=int(row['tingkat_stres']),
-                    detak_jantung=int(row['detak_jantung']),
-                    langkah_kaki=int(row['langkah_kaki']),
-                    sistolik=int(row['sistolik']),
-                    diastolik=int(row['diastolik']),
-                    gangguan_tidur=row['gangguan_tidur'],
-                )
-                db.session.add(entry)
+            # Isi nilai NaN dengan string kosong atau default
+            df = df.fillna({
+                'gangguan_tidur': 'Tidak Diketahui'
+            })
+
+            for index, row in df.iterrows():
+                try:
+                    entry = DataTraining(
+                        jenis_kelamin=str(row['jenis_kelamin']),
+                        usia=int(row['usia']),
+                        durasi_tidur=float(row['durasi_tidur']),
+                        kualitas_tidur=int(row['kualitas_tidur']),
+                        tingkat_stres=int(row['tingkat_stres']),
+                        detak_jantung=int(row['detak_jantung']),
+                        langkah_kaki=int(row['langkah_kaki']),
+                        sistolik=int(row['sistolik']),
+                        diastolik=int(row['diastolik']),
+                        gangguan_tidur=str(row['gangguan_tidur']),
+                    )
+                    db.session.add(entry)
+                except Exception as e:
+                    print(f"Baris ke-{index} dilewati karena error: {e}")
+                    continue  # lewati baris yang error
 
             db.session.commit()
             print("Commit berhasil")
@@ -255,6 +262,7 @@ def upload_data_training():
         flash("Format file tidak didukung. Hanya CSV.")
 
     return redirect(url_for("data_training"))
+
 
 @app.route("/manajemen_pengguna", methods=["GET"])
 @login_required
