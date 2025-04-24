@@ -54,21 +54,12 @@
                       <form id="formAccountSettings" method="POST" action="{{ url_for('profile') }}">
                         <div class="row">
                           <div class="mb-3 col-md-6">
-                            <label class="form-label">Nama Awal</label>
+                            <label class="form-label">Nama</label>
                             <input
                               class="form-control"
                               type="text"
-                              name="nama_awal"
-                              value="{{nama_awal}}"
-                            />
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label class="form-label">Nama Akhir</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              name="nama_akhir"
-                              value="{{nama_akhir}}"
+                              name="nama"
+                              value="{{nama}}"
                             />
                           </div>
                           <div class="mb-3 col-md-6">
@@ -93,16 +84,6 @@
                           <div class="mb-3 col-md-6">
                             <label for="html5-date-input" class="col-md-3 form-label">Tanggal Lahir</label>
                               <input class="form-control" type="date" name="tanggal_lahir" value="{{tanggal_lahir}}" id="html5-date-input" />
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label class="form-label">Agama</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              name="agama"
-                              value={{agama}}
-                              placeholder="Agama"
-                            />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label class="form-label" for="phoneNumber">Nomor Telepon</label>

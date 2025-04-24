@@ -29,18 +29,19 @@
                         <th>ID</th>
                         <th>Nama</th>
                         <th>E-mail</th>
+                        <th>No Telepon</th>
                         <th>Peran</th>
-                        <th>Terdaftar</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
+                    {% for user in users %}
                       <tr>
-                        <td>001</td>
-                        <td>Arinka Arethusa</td>
-                        <td>arinka.arethusa@gmail.com</td>
-                        <td>Admin</td>
-                        <td>12 Jan 2025</td>
+                        <td>{{user.id}}</td>
+                        <td>{{user.nama}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.no_telp}}</td>
+                        <td>{{user.role}}</td>
                         <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -57,72 +58,7 @@
                           </div>
                         </td>
                       </tr>
-                    <tr>
-                        <td>002</td>
-                        <td>Ian Julianto</td>
-                        <td>ian.julianto@gmail.com</td>
-                        <td>Admin</td>
-                        <td>15 Jan 2025</td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bxs-user-detail me-1"></i> Lihat Detail</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-trash me-1"></i> Hapus</a
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                    <tr>
-                        <td>003</td>
-                        <td>Lenni Melinda</td>
-                        <td>lenni.melinda@gmail.com</td>
-                        <td>User</td>
-                        <td>25 Jan 2025</td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bxs-user-detail me-1"></i> Lihat Detail</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-trash me-1"></i> Hapus</a
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                    <tr>
-                        <td>004</td>
-                        <td>Ainun</td>
-                        <td>ainun@gmail.com</td>
-                        <td>User</td>
-                        <td>02 Feb 2025</td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bxs-user-detail me-1"></i> Lihat Detail</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-trash me-1"></i> Hapus</a
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
+                    {% endfor %}
                     </tbody>
                   </table>
                 </div>
