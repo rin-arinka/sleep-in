@@ -1,48 +1,15 @@
-from flask import Flask, render_template, request, url_for, redirect, flash
+from flask import Flask, render_template, request, url_for, redirect, flash,jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-from sqlalchemy import Integer, String, Float
-from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
-import datetime
+from flask_login import login_user, LoginManager, login_required, current_user, logout_user
+from models import db, User, DataTraining
+from knn import predict_sleep_disorder,train_and_save_knn_model
 import pandas as pd
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret-key-goes-here'
 
-# CREATE DATABASE
-class Base(DeclarativeBase):
-    pass
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sleep-in.db'
-db = SQLAlchemy(model_class=Base)
 db.init_app(app)
-
-# CREATE TABLE IN DB with the UserMixin
-class User(UserMixin, db.Model):
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    email: Mapped[str] = mapped_column(String(100), unique=True)
-    password: Mapped[str] = mapped_column(String(100))
-    nama: Mapped[str] = mapped_column(String(100))
-    jenis_kelamin: Mapped[str] = mapped_column(String(100))
-    tanggal_lahir: Mapped[datetime.date] = mapped_column(String(100))
-    no_telp: Mapped[str] = mapped_column(String(100))
-    alamat: Mapped[str] = mapped_column(String(1000))
-    kota: Mapped[str] = mapped_column(String(100))
-    provinsi: Mapped[str] = mapped_column(String(100))
-    role: Mapped[str] = mapped_column(String(1000))
-
-class DataTraining(db.Model):
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    jenis_kelamin: Mapped[str] = mapped_column(String(100))
-    usia: Mapped[int] = mapped_column(Integer)
-    durasi_tidur: Mapped[float] = mapped_column(Float)
-    kualitas_tidur: Mapped[int] = mapped_column(Integer)
-    tingkat_stres: Mapped[int] = mapped_column(Integer)
-    detak_jantung: Mapped[int] = mapped_column(Integer)
-    langkah_kaki: Mapped[int] = mapped_column(Integer)
-    sistolik: Mapped[int] = mapped_column(Integer)
-    diastolik: Mapped[int] = mapped_column(Integer)
-    gangguan_tidur: Mapped[str] = mapped_column(String(100))
 
 with app.app_context():
     db.create_all()
@@ -183,13 +150,29 @@ def riwayat_admin():
     # Passing the name from the current_user
     return render_template("dashboard-admin/riwayat_admin.html", name=current_user.nama, logged_in=True)
 
-@app.route("/data_training")
+@app.route("/data_training", methods=["GET"])
 @login_required
 def data_training():
+    # Memeriksa apakah pengguna yang login adalah admin
+    if current_user.role != "admin":
+        flash("Anda tidak memiliki izin untuk mengakses halaman ini.", "error")
+        return redirect(url_for("dashboard"))
+
+    # Ambil parameter halaman dari URL (default ke halaman 1)
+    page = request.args.get("page", 1, type=int)
+    per_page = 25  # jumlah data per halaman
+
+    # Gunakan paginate untuk membatasi data yang ditampilkan
+    data_training_paginated = DataTraining.query.paginate(page=page, per_page=per_page)
+
     print(current_user.nama)
 
     # Passing the name from the current_user
-    return render_template("dashboard-admin/data_training.html", name=current_user.nama, logged_in=True)
+    return render_template("dashboard-admin/data_training.html",
+                           name=current_user.nama,
+                           data_training=data_training_paginated.items,
+                           pagination=data_training_paginated,
+                           logged_in=True)
 
 @app.route("/data_training/upload", methods=["POST"])
 @login_required
@@ -226,7 +209,7 @@ def upload_data_training():
 
             # Isi nilai NaN dengan string kosong atau default
             df = df.fillna({
-                'gangguan_tidur': 'Tidak Diketahui'
+                'gangguan_tidur': 'Normal'
             })
 
             for index, row in df.iterrows():
@@ -263,6 +246,30 @@ def upload_data_training():
 
     return redirect(url_for("data_training"))
 
+@app.route("/train_knn", methods=["GET"])
+@login_required
+def train_knn():
+    if current_user.role != "admin":
+        return jsonify({"error": "Unauthorized"}), 403
+
+    result = train_and_save_knn_model()
+    return jsonify({"message": result})
+
+@app.route("/prediksi_gangguan", methods=["POST"])
+@login_required
+def prediksi_gangguan():
+    # Ambil input data dari request JSON
+    input_data = request.json
+
+    # Prediksi gangguan tidur
+    try:
+        hasil_prediksi = predict_sleep_disorder(input_data)
+        return jsonify({
+            "hasil_prediksi": hasil_prediksi,
+            "status": "success"
+        })
+    except Exception as e:
+        return jsonify({"error": str(e), "status": "failed"}), 500
 
 @app.route("/manajemen_pengguna", methods=["GET"])
 @login_required

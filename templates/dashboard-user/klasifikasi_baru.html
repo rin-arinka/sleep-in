@@ -13,7 +13,7 @@
                 <div class="col-xxl">
                   <div class="card mb-4">
                     <div class="card-body">
-                      <form>
+                      <form id="formPrediksi">
                         <div class="row mb-3">
                           <label class="col-sm-2 col-form-label">Jenis Kelamin</label>
                           <div class="col-sm-10">
@@ -121,6 +121,42 @@
                 </div>
               </div>
             </div>
+            <!-- Hasil prediksi -->
+            <div class="alert alert-info mt-3 d-none" id="hasilPrediksi">
+                Hasil prediksi akan muncul di sini...
+            </div>
+
+            <script>
+              document.getElementById("formPrediksi").addEventListener("submit", async function(e) {
+                  e.preventDefault();
+
+                  const formData = new FormData(this);
+                  const jsonData = Object.fromEntries(formData.entries());
+
+                  const response = await fetch("{{ url_for('prediksi_gangguan') }}", {
+                      method: "POST",
+                      headers: {
+                          "Content-Type": "application/json"
+                      },
+                      body: JSON.stringify(jsonData)
+                  });
+
+                  const result = await response.json();
+
+                  const hasilBox = document.getElementById("hasilPrediksi");
+                  if (result.status === "success") {
+                      hasilBox.textContent = `✅ Hasil Prediksi: ${result.hasil_prediksi}`;
+                      hasilBox.classList.remove("d-none");
+                      hasilBox.classList.remove("alert-danger");
+                      hasilBox.classList.add("alert-info");
+                  } else {
+                      hasilBox.textContent = "❌ Gagal melakukan prediksi!";
+                      hasilBox.classList.remove("d-none");
+                      hasilBox.classList.remove("alert-info");
+                      hasilBox.classList.add("alert-danger");
+                  }
+              });
+              </script>
             <!-- / Content -->
 
             {% include 'dashboard-user/user_footer.html' %}

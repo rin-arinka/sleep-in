@@ -35,6 +35,12 @@
                   {% endif %}
                 {% endwith %}
               </form>
+
+               <!-- Tombol Latih Ulang -->
+                          <form action="{{ url_for('train_knn') }}" method="GET" onsubmit="return confirm('Latih ulang model KNN sekarang?')">
+                              <button type="submit" class="btn btn-primary mb-4">Latih Ulang Model KNN</button>
+                          </form>
+
               <!-- Basic Bootstrap Table -->
               <div class="card">
                 <div class="table-responsive text-nowrap">
@@ -42,18 +48,25 @@
                     <thead>
                       <tr>
                         <th>ID</th>
-                        <th>Usia</th>
                         <th>Jenis Kelamin</th>
-                        <th>Hasil Klasifikasi</th>
+                        <th>Usia</th>
+                        <th>Durasi Tidur</th>
+                        <th>Kualitas Tidur</th>
+                        <th>Tingkat Stres</th>
+                        <th>Detak Jantung</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
+                    {% for item in data_training %}
                       <tr>
-                        <td>101</td>
-                        <td>43</td>
-                        <td>Laki-laki</td>
-                        <td>Normal</td>
+                        <td>{{item.id}}</td>
+                        <td>{{item.jenis_kelamin}}</td>
+                        <td>{{item.usia}}</td>
+                        <td>{{item.durasi_tidur}}</td>
+                        <td>{{item.kualitas_tidur}}</td>
+                        <td>{{item.tingkat_stres}}</td>
+                        <td>{{item.detak_jantung}}</td>
                         <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -70,52 +83,43 @@
                           </div>
                         </td>
                       </tr>
-                    <tr>
-                        <td>102</td>
-                        <td>29</td>
-                        <td>Laki-laki</td>
-                        <td>Insomnia</td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bxs-user-detail me-1"></i> Lihat Detail</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-trash me-1"></i> Hapus</a
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                    <tr>
-                        <td>103</td>
-                        <td>37</td>
-                        <td>Perempuan</td>
-                        <td>Sleep Apnea</td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bxs-user-detail me-1"></i> Lihat Detail</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-trash me-1"></i> Hapus</a
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
+                    {% endfor %}
                     </tbody>
                   </table>
                 </div>
               </div>
+              <nav aria-label="Page navigation" class="py-3">
+                <ul class="pagination">
+                  {% if pagination.has_prev %}
+                    <li class="page-item">
+                      <a class="page-link" href="{{ url_for('data_training', page=pagination.prev_num) }}">Sebelumnya</a>
+                    </li>
+                  {% else %}
+                    <li class="page-item disabled"><span class="page-link">Sebelumnya</span></li>
+                  {% endif %}
+
+                  {% for page_num in pagination.iter_pages(left_edge=1, right_edge=1, left_current=2, right_current=2) %}
+                    {% if page_num %}
+                      {% if page_num == pagination.page %}
+                        <li class="page-item active"><span class="page-link">{{ page_num }}</span></li>
+                      {% else %}
+                        <li class="page-item"><a class="page-link" href="{{ url_for('data_training', page=page_num) }}">{{ page_num }}</a></li>
+                      {% endif %}
+                    {% else %}
+                      <li class="page-item disabled"><span class="page-link">…</span></li>
+                    {% endif %}
+                  {% endfor %}
+
+                  {% if pagination.has_next %}
+                    <li class="page-item">
+                      <a class="page-link" href="{{ url_for('data_training', page=pagination.next_num) }}">Berikutnya</a>
+                    </li>
+                  {% else %}
+                    <li class="page-item disabled"><span class="page-link">Berikutnya</span></li>
+                  {% endif %}
+                </ul>
+              </nav>
+
               <!--/ Basic Bootstrap Table -->
 
               <hr class="my-5" />
