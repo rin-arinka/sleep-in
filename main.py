@@ -269,6 +269,7 @@ def prediksi_gangguan():
             "status": "success"
         })
     except Exception as e:
+        print(f"❗ Error prediksi: {e}")  # Tambahkan ini untuk debug
         return jsonify({"error": str(e), "status": "failed"}), 500
 
 @app.route("/manajemen_pengguna", methods=["GET"])

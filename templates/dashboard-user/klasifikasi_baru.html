@@ -13,37 +13,43 @@
                 <div class="col-xxl">
                   <div class="card mb-4">
                     <div class="card-body">
+                      <div class="progress mb-3 d-none" id="progressBarContainer" style="height: 6px;">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+                             role="progressbar"
+                             style="width: 0%;"
+                             id="progressBar"></div>
+                      </div>
                       <form id="formPrediksi">
                         <div class="row mb-3">
                           <label class="col-sm-2 col-form-label">Jenis Kelamin</label>
                           <div class="col-sm-10">
                             <div class>
-                              <select id="defaultSelect" class="form-select">
+                              <select id="input-jenis-kelamin" class="form-select">
                                 <option>Pilih Jenis Kelamin</option>
-                                <option value="1">Laki-laki</option>
-                                <option value="2">Perempuan</option>
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
                               </select>
                             </div>
                           </div>
                         </div>
                         <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-default-company">Usia</label>
+                          <label class="col-sm-2 col-form-label" >Usia</label>
                           <div class="col-sm-10">
                             <input
-                              type="text"
+                              type="number"
                               class="form-control"
-                              id="basic-default-company"
+                              id="input-usia"
                               placeholder="Masukkan usia Anda"
                             />
                           </div>
                         </div>
                         <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-default-email">Durasi Tidur (Jam)</label>
+                          <label class="col-sm-2 col-form-label" >Durasi Tidur (Jam)</label>
                           <div class="col-sm-10">
                             <div class="input-group input-group-merge">
                               <input
-                                type="text"
-                                id="basic-default-email"
+                                type="number"
+                                id="input-durasi-tidur"
                                 class="form-control"
                                 placeholder="Contoh: 7.5"
                               />
@@ -54,8 +60,9 @@
                           <label class="col-sm-2 col-form-label">Kualitas Tidur (1-10)</label>
                           <div class="col-sm-10">
                             <input
-                              type="text"
+                              type="number"
                               class="form-control phone-mask"
+                              id="input-kualitas-tidur"
                               placeholder="1 = Sangat Buruk, 10 = Sangat Baik"
                             />
                           </div>
@@ -64,8 +71,9 @@
                           <label class="col-sm-2 col-form-label">Tingkat Stress </br> (1-10)</label>
                           <div class="col-sm-10">
                             <input
-                              type="text"
+                              type="number"
                               class="form-control phone-mask"
+                              id="input-tingkat-stres"
                               placeholder="1 = Sangat Buruk, 10 = Sangat Baik"
                             />
                           </div>
@@ -74,8 +82,9 @@
                           <label class="col-sm-2 col-form-label">Detak Jantung</label>
                           <div class="col-sm-10">
                             <input
-                              type="text"
+                              type="number"
                               class="form-control phone-mask"
+                              id="input-detak-jantung"
                               placeholder="Hitung jumlah denyut dalam 15 detik, dan kalikan dengan empat"
                             />
                           </div>
@@ -84,8 +93,9 @@
                           <label class="col-sm-2 col-form-label">Langkah Kaki Harian</label>
                           <div class="col-sm-10">
                             <input
-                              type="text"
+                              type="number"
                               class="form-control phone-mask"
+                              id="input-langkah-kaki"
                               placeholder="1 km setara dengan sekitar 1.400 langkah kaki"
                             />
                           </div>
@@ -94,8 +104,9 @@
                           <label class="col-sm-2 col-form-label">Tekanan Darah Sistolik</label>
                           <div class="col-sm-10">
                             <input
-                              type="text"
+                              type="number"
                               class="form-control phone-mask"
+                              id="input-sistolik"
                               placeholder="Angka sistolik di kisaran 90 - 119"
                             />
                           </div>
@@ -104,8 +115,9 @@
                           <label class="col-sm-2 col-form-label">Tekanan Darah Diastolik</label>
                           <div class="col-sm-10">
                             <input
-                              type="text"
+                              type="number"
                               class="form-control phone-mask"
+                              id="input-diastolik"
                               placeholder="Angka diastolik di kisaran 60 - 79"
                             />
                           </div>
@@ -121,18 +133,73 @@
                 </div>
               </div>
             </div>
+            <div class="spinner-border text-primary mt-3 d-none" role="status" id="loadingPrediksi">
+                <span class="visually-hidden">Loading...</span>
+            </div>
             <!-- Hasil prediksi -->
             <div class="alert alert-info mt-3 d-none" id="hasilPrediksi">
                 Hasil prediksi akan muncul di sini...
             </div>
+          </div>
 
             <script>
-              document.getElementById("formPrediksi").addEventListener("submit", async function(e) {
-                  e.preventDefault();
+              const form = document.getElementById("formPrediksi");
+              const loading = document.getElementById("loadingPrediksi");
+              const hasilBox = document.getElementById("hasilPrediksi");
+              const submitButton = form.querySelector('button[type="submit"]');
+              const progressBarContainer = document.getElementById("progressBarContainer");
+              const progressBar = document.getElementById("progressBar");
 
-                  const formData = new FormData(this);
-                  const jsonData = Object.fromEntries(formData.entries());
+              let progressInterval;
 
+              form.addEventListener("submit", async function(event) {
+                event.preventDefault(); // Stop default reload
+
+              // Ambil semua data form
+              const jenisKelamin = document.getElementById("input-jenis-kelamin").value;
+              const usia = document.getElementById("input-usia").value;
+              const durasiTidur = document.getElementById("input-durasi-tidur").value;
+              const kualitasTidur = document.getElementById("input-kualitas-tidur").value.trim();
+              const tingkatStress = document.getElementById("input-tingkat-stres").value.trim();
+              const detakJantung = document.getElementById("input-detak-jantung").value.trim();
+              const langkahKaki = document.getElementById("input-langkah-kaki").value.trim();
+              const tekananSistolik = document.getElementById("input-sistolik").value.trim();
+              const tekananDiastolik = document.getElementById("input-diastolik").value.trim();
+
+              // Validasi sederhana
+              if (jenisKelamin === "Pilih Jenis Kelamin" || !usia || !durasiTidur || !kualitasTidur || !tingkatStress || !detakJantung || !langkahKaki || !tekananSistolik || !tekananDiastolik) {
+                alert("❗ Semua field wajib diisi dengan benar!");
+                return;
+              }
+
+              if (isNaN(usia) || isNaN(durasiTidur) || isNaN(kualitasTidur) || isNaN(tingkatStress) || isNaN(detakJantung) || isNaN(langkahKaki) || isNaN(tekananSistolik) || isNaN(tekananDiastolik)) {
+                alert("❗ Pastikan semua input berupa angka!");
+                return;
+              }
+
+              const jsonData = {
+                jenis_kelamin: jenisKelamin,
+                usia: Number(usia),
+                durasi_tidur: Number(durasiTidur),
+                kualitas_tidur: Number(kualitasTidur),
+                tingkat_stres: Number(tingkatStress),
+                detak_jantung: Number(detakJantung),
+                langkah_kaki: Number(langkahKaki),
+                sistolik: Number(tekananSistolik),
+                diastolik: Number(tekananDiastolik)
+              };
+
+              // Tampilkan loading spinner + disable tombol
+              loading.classList.remove("d-none");
+              hasilBox.classList.add("d-none");
+              submitButton.disabled = true;
+              submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
+              progressBarContainer.classList.remove("d-none");
+              progressBar.style.width = "0%";
+
+              startProgress();
+
+              try {
                   const response = await fetch("{{ url_for('prediksi_gangguan') }}", {
                       method: "POST",
                       headers: {
@@ -143,20 +210,64 @@
 
                   const result = await response.json();
 
-                  const hasilBox = document.getElementById("hasilPrediksi");
+                  stopProgress();
+
+                  loading.classList.add("d-none");  // Hide spinner
+                  submitButton.disabled = false;
+                  submitButton.innerHTML = "Mulai Klasifikasi";
+
                   if (result.status === "success") {
-                      hasilBox.textContent = `✅ Hasil Prediksi: ${result.hasil_prediksi}`;
-                      hasilBox.classList.remove("d-none");
-                      hasilBox.classList.remove("alert-danger");
-                      hasilBox.classList.add("alert-info");
+                       hasilBox.innerHTML = `
+                        <strong>✅ Hasil Prediksi:</strong> <br><br>
+                        <span style="font-size: 1.2em;">${result.hasil_prediksi}</span>
+                      `;
+                      hasilBox.classList.remove("d-none", "alert-danger");
+                      hasilBox.classList.add("alert-info", "animate__animated", "animate__fadeIn");
+
+                      form.reset(); // Reset semua input form
                   } else {
-                      hasilBox.textContent = "❌ Gagal melakukan prediksi!";
-                      hasilBox.classList.remove("d-none");
-                      hasilBox.classList.remove("alert-info");
-                      hasilBox.classList.add("alert-danger");
+                      hasilBox.innerHTML = `
+                        <strong>❌ Gagal melakukan prediksi!</strong>
+                      `;
+                      hasilBox.classList.remove("d-none", "alert-info");
+                      hasilBox.classList.add("alert-danger", "animate__animated", "animate__fadeIn");
                   }
+                } catch (err) {
+                  stopProgress();
+
+                  loading.classList.add("d-none");
+                  submitButton.disabled = false;
+                  submitButton.innerHTML = "Mulai Klasifikasi";
+
+                  hasilBox.innerHTML = `
+                    <strong>❌ Terjadi kesalahan jaringan atau server.</strong>
+                  `;
+                  hasilBox.classList.remove("d-none", "alert-info");
+                  hasilBox.classList.add("alert-danger", "animate__animated", "animate__fadeIn");
+                }
               });
-              </script>
+
+              function startProgress() {
+                let width = 0;
+                progressInterval = setInterval(() => {
+                  if (width >= 90) {
+                    clearInterval(progressInterval);
+                  } else {
+                    width += 1;
+                    progressBar.style.width = width + "%";
+                  }
+                }, 50); // naik setiap 50ms
+              }
+
+              function stopProgress() {
+                clearInterval(progressInterval);
+                progressBar.style.width = "100%";
+                setTimeout(() => {
+                  progressBarContainer.classList.add("d-none");
+                  progressBar.style.width = "0%";
+                }, 500);
+              }
+            </script>
             <!-- / Content -->
 
             {% include 'dashboard-user/user_footer.html' %}
