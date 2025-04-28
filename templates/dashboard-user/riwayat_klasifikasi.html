@@ -13,17 +13,18 @@
                   <table class="table">
                     <thead>
                       <tr>
-                        <th>Tanggal</th>
+                        <th>Waktu</th>
+                        <th>Nama</th>
                         <th>Hasil Klasifikasi</th>
-                        <th>Tingkat Kepercayaan</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
+                      {% for h in riwayat_prediksi %}
                       <tr>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i>2023-10-15</td>
-                        <td>Normal</td>
-                        <td>95%</td>
+                          <td>{{ h.waktu.strftime('%d %b %Y %H:%M') }}</td>
+                          <td>{{ h.nama }}</td>
+                          <td>{{ h.hasil }}</td>
                         <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -40,46 +41,7 @@
                           </div>
                         </td>
                       </tr>
-                    <tr>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i>2023-10-10</td>
-                        <td>Insomnia</td>
-                        <td>87%</td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bxs-user-detail me-1"></i> Lihat Detail</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-trash me-1"></i> Hapus</a
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                    <tr>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i>2023-10-05</td>
-                        <td>Sleep Apnea</td>
-                        <td>92%</td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bxs-user-detail me-1"></i> Lihat Detail</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-trash me-1"></i> Hapus</a
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
+                      {% endfor %}
                     </tbody>
                   </table>
                 </div>

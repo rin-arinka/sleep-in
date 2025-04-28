@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect, flash,jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, LoginManager, login_required, current_user, logout_user
-from models import db, User, DataTraining
+from models import db, User, DataTraining, HasilPrediksi
 from knn import predict_sleep_disorder,train_and_save_knn_model
 import pandas as pd
 
@@ -10,9 +10,6 @@ app.config['SECRET_KEY'] = 'secret-key-goes-here'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sleep-in.db'
 db.init_app(app)
-
-with app.app_context():
-    db.create_all()
 
 # Configure Flask-Login's Login Manager
 login_manager = LoginManager()
@@ -135,21 +132,6 @@ def klasifikasi_admin():
     # Passing the name from the current_user
     return render_template("dashboard-admin/klasifikasi_admin.html", name=current_user.nama, logged_in=True)
 
-
-@app.route("/riwayat_klasifikasi")
-@login_required
-def riwayat_klasifikasi():
-    print(current_user.nama)
-    # Passing the name from the current_user
-    return render_template("dashboard-user/riwayat_klasifikasi.html", name=current_user.nama, logged_in=True)
-
-@app.route("/riwayat_admin")
-@login_required
-def riwayat_admin():
-    print(current_user.nama)
-    # Passing the name from the current_user
-    return render_template("dashboard-admin/riwayat_admin.html", name=current_user.nama, logged_in=True)
-
 @app.route("/data_training", methods=["GET"])
 @login_required
 def data_training():
@@ -264,13 +246,55 @@ def prediksi_gangguan():
     # Prediksi gangguan tidur
     try:
         hasil_prediksi = predict_sleep_disorder(input_data)
+
+        # Simpan hasil ke database
+        hasil = HasilPrediksi(nama=current_user.nama,
+                              hasil=hasil_prediksi,
+                              user_id=current_user.id  # <-- ini wajib ditambahkan
+                              )
+        db.session.add(hasil)
+        db.session.commit()
+
         return jsonify({
             "hasil_prediksi": hasil_prediksi,
             "status": "success"
         })
+
     except Exception as e:
         print(f"❗ Error prediksi: {e}")  # Tambahkan ini untuk debug
         return jsonify({"error": str(e), "status": "failed"}), 500
+
+@app.route("/riwayat_klasifikasi",methods=["GET"])
+@login_required
+def riwayat_klasifikasi():
+
+    riwayat = (HasilPrediksi.query
+               .filter_by(user_id=current_user.id)  # Filter by user ID
+               .order_by(HasilPrediksi.waktu.desc())
+               .limit(10)
+               .all())
+
+    print(current_user.nama)
+
+    # Passing the name from the current_user
+    return render_template("dashboard-user/riwayat_klasifikasi.html",
+                           name=current_user.nama,
+                           riwayat_prediksi=riwayat,
+                           logged_in=True)
+
+@app.route("/riwayat_admin")
+@login_required
+def riwayat_admin():
+
+    riwayat = HasilPrediksi.query.order_by(HasilPrediksi.waktu.desc()).limit(10).all()
+
+    print(current_user.nama)
+    # Passing the name from the current_user
+    return render_template("dashboard-admin/riwayat_admin.html",
+                           name=current_user.nama,
+                           riwayat_prediksi=riwayat,
+                           logged_in=True)
+
 
 @app.route("/manajemen_pengguna", methods=["GET"])
 @login_required
@@ -371,4 +395,6 @@ def logout():
     return redirect(url_for('home'))
 
 if __name__ == "__main__":
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)

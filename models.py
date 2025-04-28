@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String, Float
 from flask_login import UserMixin, LoginManager
-import datetime
+from datetime import datetime
 
 # CREATE DATABASE
 class Base(DeclarativeBase):
@@ -37,3 +37,10 @@ class DataTraining(db.Model):
     sistolik: Mapped[int] = mapped_column(Integer)
     diastolik: Mapped[int] = mapped_column(Integer)
     gangguan_tidur: Mapped[str] = mapped_column(String(100))
+
+class HasilPrediksi(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    waktu = db.Column(db.DateTime, default=datetime.utcnow)
+    nama = db.Column(db.String(100))
+    hasil = db.Column(db.String(100))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
