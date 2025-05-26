@@ -6,10 +6,10 @@
 
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="fw-bold py-3 mb-1">Data Training</h4>
-
+            <div class="d-flex flex-wrap align-items-end gap-2 mb-4">
               <form method="POST" enctype="multipart/form-data" action="{{ url_for('upload_data_training') }}">
-                <div class="button-wrapper">
-                          <label class="btn btn-secondary me-2 mb-4">
+                <div class="d-flex flex-wrap align-items-end gap-2">
+                          <label class="btn btn-secondary mb-0">
                             <span class="d-none d-sm-block">Pilih File CSV</span>
                             <i class="bx bx-upload d-block d-sm-none"></i>
                             <input
@@ -18,9 +18,10 @@
                               class="account-file-input"
                               hidden
                               accept="text/csv"
+                              id="csvFileInput"
                             />
                           </label>
-                          <button type="submit" class="btn btn-primary me-2 mb-4" tabindex="0">
+                          <button type="submit" class="btn btn-primary mb-0" tabindex="0">
                             <span class="d-none d-sm-block">Upload CSV</span>
                             <i class="bx bx-upload d-block d-sm-none"></i>
                           </button>
@@ -38,8 +39,9 @@
 
                <!-- Tombol Latih Ulang -->
                           <form action="{{ url_for('train_knn') }}" method="GET" onsubmit="return confirm('Latih ulang model KNN sekarang?')">
-                              <button type="submit" class="btn btn-primary mb-4">Latih Ulang Model KNN</button>
+                              <button type="submit" class="btn btn-primary mb-0">Latih Ulang Model KNN</button>
                           </form>
+            </div>
 
               <!-- Basic Bootstrap Table -->
               <div class="card">
@@ -53,7 +55,12 @@
                         <th>Durasi Tidur</th>
                         <th>Kualitas Tidur</th>
                         <th>Tingkat Stres</th>
-                        <th>Detak Jantung</th>
+                        <th>Kategori BMI</th>
+                        <th>Denyut Jantung</th>
+                        <th>Langkah Harian</th>
+                        <th>Sistolik</th>
+                        <th>Diastolik</th>
+                        <th>Gangguan Tidur</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
@@ -66,7 +73,12 @@
                         <td>{{item.durasi_tidur}}</td>
                         <td>{{item.kualitas_tidur}}</td>
                         <td>{{item.tingkat_stres}}</td>
-                        <td>{{item.detak_jantung}}</td>
+                        <td>{{item.kategori_bmi}}</td>
+                        <td>{{item.denyut_jantung}}</td>
+                        <td>{{item.langkah_harian}}</td>
+                        <td>{{item.sistolik}}</td>
+                        <td>{{item.diastolik}}</td>
+                        <td>{{item.gangguan_tidur}}</td>
                         <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">

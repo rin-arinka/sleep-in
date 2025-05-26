@@ -1,4 +1,4 @@
-          {% include 'dashboard-user/user_header.html' %}
+          {% include 'dashboard-admin/admin_header.html' %}
 
           <!-- Content wrapper -->
           <div class="content-wrapper">
@@ -50,7 +50,7 @@
                   {% endif %}
               {% endwith %}
                     <div class="card-body">
-                      <form id="formAccountSettings" method="POST" action="{{ url_for('profile') }}">
+                      <form id="formAccountSettings" method="POST" action="{{ url_for('profile_admin') }}">
                         <div class="row">
                           <div class="mb-3 col-md-6">
                             <label class="form-label">Nama</label>
@@ -147,4 +147,4 @@
             </div>
             <!-- / Content -->
 
-            {% include 'dashboard-user/user_footer.html' %}
+            {% include 'dashboard-admin/admin_footer.html' %}

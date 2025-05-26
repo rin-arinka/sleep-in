@@ -1,58 +1,83 @@
         {% include 'dashboard-admin/admin_header.html' %}
 
+
+
           <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
-
             <div class="container-xxl flex-grow-1 container-p-y">
               <div class="row">
-                <div class=" mb-4 order-0">
-                  <div class="card">
-                    <div class="d-flex align-items-end row">
-                      <div class="col-sm-7">
-                        <div class="card-body">
-                          <h5 class="card-title text-primary">Total Pengguna</h5>
-                          <p class="mb-1">150</p>
+                <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
+                    <div class="card">
+                      <div class="d-flex align-items-end row">
+                        <div class="col-sm-10">
+                          <div class="card-body">
+                            <h5 class="card-title text-primary">Total Pengguna</h5>
+                            <p class="mb-1">{{ total_pengguna }}</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
                   </div>
                 </div>
-                <div class=" mb-4 order-0">
-                  <div class="card">
-                    <div class="d-flex align-items-end row">
-                      <div class="col-sm-7">
-                        <div class="card-body">
-                          <h5 class="card-title text-primary">Total Klasifikasi</h5>
-                          <p class="mb-1">350</p>
+                <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
+                    <div class="card">
+                      <div class="d-flex align-items-end row">
+                        <div class="col-sm-10">
+                          <div class="card-body">
+                            <h5 class="card-title text-primary">Total Klasifikasi</h5>
+                            <p class="mb-1">{{ total_klasifikasi }}</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
                   </div>
                 </div>
-                <div class=" mb-4 order-0">
-                  <div class="card">
-                    <div class="d-flex align-items-end row">
-                      <div class="col-sm-7">
-                        <div class="card-body">
-                          <h5 class="card-title text-primary">Akurasi</h5>
-                          <p class="mb-1">92,5%</p>
+                <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
+                    <div class="card">
+                      <div class="d-flex align-items-end row">
+                        <div class="col-sm-10">
+                          <div class="card-body">
+                            <h5 class="card-title text-primary">Total Data Training</h5>
+                            <p class="mb-1">{{ total_data_training }}</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
                   </div>
                 </div>
-              </div>
               <div>
-                <ul class="nav nav-pills" role="tablist">
-                  <li class="nav-item">
-                    <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-tabs-line-card-income" aria-controls="navs-tabs-line-card-income" aria-selected="true">
-                      Klasifikasi Baru
-                    </button>
-                  </li>
-                </ul>
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Statistik Gangguan Tidur</h5>
+                    <canvas id="grafikGangguan" height="100"></canvas>
+                  </div>
+                </div>
               </div>
             </div>
+            </div>
+          </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+              const ctx = document.getElementById('grafikGangguan').getContext('2d');
+              const grafikGangguan = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                  labels: {{ label_gangguan|tojson }},
+                  datasets: [{
+                    label: 'Jumlah Klasifikasi',
+                    data: {{ jumlah_gangguan|tojson }},
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                  }]
+                },
+                options: {
+                  scales: {
+                    y: { beginAtZero: true }
+                  }
+                }
+              });
+            </script>
+
             <!-- / Content -->
 
             {% include 'dashboard-admin/admin_footer.html' %}

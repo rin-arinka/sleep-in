@@ -5,23 +5,11 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-1">Manajemen Pengguna</h4>
+              <h4 class="fw-bold py-3 mb-1">Daftar Pengguna</h4>
 
-              <div class="button-wrapper">
-                          <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-                            <span class="d-none d-sm-block">Tambah Pengguna</span>
-                            <i class="bx bx-upload d-block d-sm-none"></i>
-                            <input
-                              type="file"
-                              id="upload"
-                              class="account-file-input"
-                              hidden
-                              accept="image/png, image/jpeg"
-                            />
-                          </label>
-                        </div>
-              <!-- Basic Bootstrap Table -->
-              <div class="card">
+             <div class="row">
+               <div class="col-md-12">
+              <div class="card mb-4">
                 <div class="table-responsive text-nowrap">
                   <table class="table">
                     <thead>
@@ -36,14 +24,14 @@
                       </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                    {% for user in users %}
+                    {% for item in user %}
                       <tr>
-                        <td>{{user.id}}</td>
-                        <td>{{user.nama}}</td>
-                        <td>{{user.jenis_kelamin}}</td>
-                        <td>{{user.email}}</td>
-                        <td>{{user.no_telp}}</td>
-                        <td>{{user.role}}</td>
+                        <td>{{item.id}}</td>
+                        <td>{{item.nama}}</td>
+                        <td>{{item.jenis_kelamin}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.no_telp}}</td>
+                        <td>{{item.role}}</td>
                         <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -65,11 +53,172 @@
                   </table>
                 </div>
               </div>
+                 <nav aria-label="Page navigation" class="py-3">
+                <ul class="pagination">
+                  {% set ep = 'manajemen_pengguna' %}      {# atau request.endpoint #}
+                  {% if pagination.has_prev %}
+                    <li class="page-item">
+                      <a class="page-link" href="{{ url_for(ep, page=pagination.prev_num) }}">Sebelumnya</a>
+                    </li>
+                  {% else %}
+                    <li class="page-item disabled"><span class="page-link">Sebelumnya</span></li>
+                  {% endif %}
+
+                  {% for page_num in pagination.iter_pages(left_edge=1, right_edge=1, left_current=2, right_current=2) %}
+                    {% if page_num %}
+                      {% if page_num == pagination.page %}
+                        <li class="page-item active"><span class="page-link">{{ page_num }}</span></li>
+                      {% else %}
+                        <li class="page-item"><a class="page-link" href="{{ url_for(ep, page=page_num) }}">{{ page_num }}</a></li>
+                      {% endif %}
+                    {% else %}
+                      <li class="page-item disabled"><span class="page-link">…</span></li>
+                    {% endif %}
+                  {% endfor %}
+
+                  {% if pagination.has_next %}
+                    <li class="page-item">
+                      <a class="page-link" href="{{ url_for(ep, page=pagination.next_num) }}">Berikutnya</a>
+                    </li>
+                  {% else %}
+                    <li class="page-item disabled"><span class="page-link">Berikutnya</span></li>
+                  {% endif %}
+                </ul>
+              </nav>
+                 <hr class="my-1" />
+                 <h4 class="fw-bold py-3 mb-1">Tambah Pengguna</h4>
+              <div class="card mb-4">
+                   <!-- <div class="card-body">
+                      <div class="d-flex align-items-start align-items-sm-center gap-4">
+                         <img
+                          src="../static/assets/img/avatars/6.png"
+                          alt="user-avatar"
+                          class="d-block rounded"
+                          height="100"
+                          width="100"
+                          id="uploadedAvatar"
+                        />
+                        <div class="button-wrapper">
+                          <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+                            <span class="d-none d-sm-block">Upload foto baru</span>
+                            <i class="bx bx-upload d-block d-sm-none"></i>
+                            <input
+                              type="file"
+                              id="upload"
+                              class="account-file-input"
+                              hidden
+                              accept="image/png, image/jpeg"
+                            />
+                          </label>
+                          <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
+                            <i class="bx bx-reset d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Reset</span>
+                          </button>
+
+                          <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="my-0" /> -->
+                    {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    {% for message in messages %}
+                     <p>{{ message }}</p>
+                    {% endfor %}
+                  {% endif %}
+              {% endwith %}
+                    <div class="card-body">
+                      <form id="formAccountSettings" method="POST" action="{{ url_for('manajemen_pengguna') }}">
+                        <div class="row">
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label">Nama</label>
+                            <input
+                              class="form-control"
+                              type="text"
+                              name="nama"
+                              placeholder="Nama"
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input
+                              class="form-control"
+                              type="text"
+                              id="email"
+                              name="email"
+                              placeholder="john.doe@example.com"
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label">Password</label>
+                            <input
+                              class="form-control"
+                              type="password"
+                              name="password"
+                              placeholder="Password"
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="role" class="form-label">Peran</label>
+                            <select id="role" name="role" class="select2 form-select" required>
+                              <option value="">Pilih Peran</option>
+                              <option value="user">User</option>
+                              <option value="admin">Admin</option>
+                            </select>
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                            <select id="jenis_kelamin" name="jenis_kelamin" class="select2 form-select" required>
+                              <option value="">Pilih Jenis Kelamin</option>
+                              <option value="Laki-laki" >Laki-laki</option>
+                              <option value="Perempuan" >Perempuan</option>
+                            </select>
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="html5-date-input" class="col-md-3 form-label">Tanggal Lahir</label>
+                              <input class="form-control" type="date" name="tanggal_lahir" id="html5-date-input" />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label" for="phoneNumber">Nomor Telepon</label>
+                            <div class="input-group input-group-merge">
+                              <input
+                                type="text"
+                                id="phoneNumber"
+                                name="no_telp"
+                                class="form-control"
+                                placeholder="+6282 555 011 111"
+                              />
+                            </div>
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="address" class="form-label">Alamat</label>
+                            <input type="text" class="form-control" id="address" name="alamat" placeholder="Alamat" />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="address" class="form-label">Kota</label>
+                            <input type="text" class="form-control" name="kota" placeholder="Kota" />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="address" class="form-label">Provinsi</label>
+                            <input type="text" class="form-control" name="provinsi" placeholder="Provinsi" />
+                          </div>
+                        </div>
+                        <div class="mt-2">
+                          <button type="submit" class="btn btn-primary me-2">Tambah Pengguna</button>
+                        </div>
+                      </form>
+                    </div>
+              </div>
+
               <!--/ Basic Bootstrap Table -->
 
               <hr class="my-5" />
 
             </div>
+             </div>
+            </div>
+          </div>
+
             <!-- / Content -->
 
             {% include 'dashboard-admin/admin_footer.html' %}

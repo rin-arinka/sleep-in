@@ -15,13 +15,23 @@
                     <div class="card-body">
                       <form>
                         <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-default-company">Nama</label>
+                          <label class="col-sm-2 col-form-label" for="user-select">Nama</label>
                           <div class="col-sm-10">
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Masukkan nama"
-                            />
+                            <select id="user-select" name="user_id" class="form-select">
+                              <option value="">Pilih Nama Pengguna</option>
+                              {% for user in users %}
+                                <option value="{{ user.id }}">{{ user.nama }}</option>
+                              {% endfor %}
+                            </select>
+                            <!-- Inisialisasi -->
+                            <script>
+                              $(document).ready(function() {
+                                $('#user-select').select2({
+                                  placeholder: "Cari nama pengguna...",
+                                  allowClear: true
+                                });
+                              });
+                            </script>
                           </div>
                         </div>
                         <div class="row mb-3">
@@ -81,7 +91,7 @@
                           </div>
                         </div>
                         <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label">Detak Jantung</label>
+                          <label class="col-sm-2 col-form-label">Denyut Jantung</label>
                           <div class="col-sm-10">
                             <input
                               type="text"
@@ -106,7 +116,7 @@
                             <input
                               type="text"
                               class="form-control phone-mask"
-                              placeholder="Angka sistolik di kisaran 90 - 119"
+                              placeholder="Angka sistolik di kisaran 90 - 140"
                             />
                           </div>
                         </div>
@@ -116,7 +126,7 @@
                             <input
                               type="text"
                               class="form-control phone-mask"
-                              placeholder="Angka diastolik di kisaran 60 - 79"
+                              placeholder="Angka diastolik di kisaran 60 - 95"
                             />
                           </div>
                         </div>

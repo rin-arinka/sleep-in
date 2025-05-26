@@ -26,8 +26,9 @@ def preprocess_data_training():
         'durasi_tidur': d.durasi_tidur,
         'kualitas_tidur': d.kualitas_tidur,
         'tingkat_stres': d.tingkat_stres,
-        'detak_jantung': d.detak_jantung,
-        'langkah_kaki': d.langkah_kaki,
+        'kategori_bmi' : d.kategori_bmi,
+        'denyut_jantung': d.denyut_jantung,
+        'langkah_harian': d.langkah_harian,
         'sistolik': d.sistolik,
         'diastolik': d.diastolik,
         'gangguan_tidur': d.gangguan_tidur
@@ -36,11 +37,13 @@ def preprocess_data_training():
     # Buat dataframe
     df = pd.DataFrame(data_list)
 
-    # Label Encoding untuk jenis_kelamin dan gangguan_tidur
+    # Label Encoding untuk jenis_kelamin, kategori_bmi dan gangguan_tidur
     label_encoder_gender = LabelEncoder()
+    label_encoder_bmi = LabelEncoder()
     label_encoder_label = LabelEncoder()
 
     df['jenis_kelamin'] = label_encoder_gender.fit_transform(df['jenis_kelamin'])
+    df['kategori_bmi'] = label_encoder_bmi.fit_transform(df['kategori_bmi'])
     df['gangguan_tidur'] = label_encoder_label.fit_transform(df['gangguan_tidur'])
 
     # Pisahkan fitur dan label
@@ -57,12 +60,22 @@ def predict_sleep_disorder(input_data: dict):
 
     # Konversi jenis_kelamin ke numerik seperti di preprocessing
     gender_map = {'Laki-laki': 1, 'Perempuan': 0}  # pastikan sesuai hasil LabelEncoder
+
+    # Konversi kategori_BMI ke numerik
+    bmi_map = {
+        'Underweight': 0,
+        'Normal': 1,
+        'Overweight': 2,
+        'Obesitas': 3
+    }
+
     input_vector = np.array([[
         gender_map.get(input_data['jenis_kelamin'], 0),
         input_data['usia'],
         input_data['durasi_tidur'],
         input_data['kualitas_tidur'],
         input_data['tingkat_stres'],
+        bmi_map.get(input_data['kategori_bmi'], 1),  # Default ke 'Normal'
         input_data['detak_jantung'],
         input_data['langkah_kaki'],
         input_data['sistolik'],
@@ -80,7 +93,7 @@ def train_and_save_knn_model():
     X, y, label_encoder = preprocess_data_training()
 
     # Melatih model KNN
-    knn = KNeighborsClassifier(n_neighbors=7)
+    knn = KNeighborsClassifier(n_neighbors=5)
     knn.fit(X, y)
 
     # Buat folder model kalau belum ada

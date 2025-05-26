@@ -3,6 +3,7 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String, Float
 from flask_login import UserMixin, LoginManager
 from datetime import datetime
+import pytz
 
 # CREATE DATABASE
 class Base(DeclarativeBase):
@@ -10,6 +11,8 @@ class Base(DeclarativeBase):
 
 db = SQLAlchemy(model_class=Base)
 
+wib = pytz.timezone('Asia/Jakarta')
+now_wib = datetime.now(wib)
 
 # CREATE TABLE IN DB with the UserMixin
 class User(UserMixin, db.Model):
@@ -23,7 +26,7 @@ class User(UserMixin, db.Model):
     alamat: Mapped[str] = mapped_column(String(1000))
     kota: Mapped[str] = mapped_column(String(100))
     provinsi: Mapped[str] = mapped_column(String(100))
-    role: Mapped[str] = mapped_column(String(1000))
+    role: Mapped[str] = mapped_column(String(100))
 
 class DataTraining(db.Model):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
@@ -32,15 +35,16 @@ class DataTraining(db.Model):
     durasi_tidur: Mapped[float] = mapped_column(Float)
     kualitas_tidur: Mapped[int] = mapped_column(Integer)
     tingkat_stres: Mapped[int] = mapped_column(Integer)
-    detak_jantung: Mapped[int] = mapped_column(Integer)
-    langkah_kaki: Mapped[int] = mapped_column(Integer)
+    kategori_bmi: Mapped[str] = mapped_column(String(100))
+    denyut_jantung: Mapped[int] = mapped_column(Integer)
+    langkah_harian: Mapped[int] = mapped_column(Integer)
     sistolik: Mapped[int] = mapped_column(Integer)
     diastolik: Mapped[int] = mapped_column(Integer)
     gangguan_tidur: Mapped[str] = mapped_column(String(100))
 
-class HasilPrediksi(db.Model):
+class HasilKlasifikasi(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     waktu = db.Column(db.DateTime, default=datetime.utcnow)
     nama = db.Column(db.String(100))
     hasil = db.Column(db.String(100))
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)

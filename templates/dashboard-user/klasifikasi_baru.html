@@ -79,7 +79,21 @@
                           </div>
                         </div>
                         <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label">Detak Jantung</label>
+                          <label class="col-sm-2 col-form-label">Kategori BMI</label>
+                          <div class="col-sm-10">
+                            <div class>
+                              <select id="input-kategori-bmi" class="form-select">
+                                <option>Pilih Kategori BMI</option>
+                                <option value="Underweight">Berat badan kurang (Underweight)</option>
+                                <option value="Normal">Berat badan normal</option>
+                                <option value="Overweight">Kelebihan berat badan (Overweight)</option>
+                                <option value="Obesitas">Obesitas</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label">Denyut Jantung</label>
                           <div class="col-sm-10">
                             <input
                               type="number"
@@ -107,7 +121,7 @@
                               type="number"
                               class="form-control phone-mask"
                               id="input-sistolik"
-                              placeholder="Angka sistolik di kisaran 90 - 119"
+                              placeholder="Angka sistolik di kisaran 90 - 140"
                             />
                           </div>
                         </div>
@@ -118,7 +132,7 @@
                               type="number"
                               class="form-control phone-mask"
                               id="input-diastolik"
-                              placeholder="Angka diastolik di kisaran 60 - 79"
+                              placeholder="Angka diastolik di kisaran 60 - 95"
                             />
                           </div>
                         </div>
@@ -161,13 +175,14 @@
               const durasiTidur = document.getElementById("input-durasi-tidur").value;
               const kualitasTidur = document.getElementById("input-kualitas-tidur").value.trim();
               const tingkatStress = document.getElementById("input-tingkat-stres").value.trim();
+              const kategoriBMI = document.getElementById("input-kategori-bmi").value.trim();
               const detakJantung = document.getElementById("input-detak-jantung").value.trim();
               const langkahKaki = document.getElementById("input-langkah-kaki").value.trim();
               const tekananSistolik = document.getElementById("input-sistolik").value.trim();
               const tekananDiastolik = document.getElementById("input-diastolik").value.trim();
 
               // Validasi sederhana
-              if (jenisKelamin === "Pilih Jenis Kelamin" || !usia || !durasiTidur || !kualitasTidur || !tingkatStress || !detakJantung || !langkahKaki || !tekananSistolik || !tekananDiastolik) {
+              if (jenisKelamin === "Pilih Jenis Kelamin" || !usia || !durasiTidur || !kualitasTidur || !tingkatStress || kategoriBMI === "Pilih Kategori BMI" || !detakJantung || !langkahKaki || !tekananSistolik || !tekananDiastolik) {
                 alert("❗ Semua field wajib diisi dengan benar!");
                 return;
               }
@@ -183,6 +198,7 @@
                 durasi_tidur: Number(durasiTidur),
                 kualitas_tidur: Number(kualitasTidur),
                 tingkat_stres: Number(tingkatStress),
+                kategori_bmi: kategoriBMI,
                 detak_jantung: Number(detakJantung),
                 langkah_kaki: Number(langkahKaki),
                 sistolik: Number(tekananSistolik),
@@ -200,7 +216,7 @@
               startProgress();
 
               try {
-                  const response = await fetch("{{ url_for('prediksi_gangguan') }}", {
+                  const response = await fetch("{{ url_for('klasifikasi_gangguan') }}", {
                       method: "POST",
                       headers: {
                           "Content-Type": "application/json"
@@ -218,8 +234,8 @@
 
                   if (result.status === "success") {
                        hasilBox.innerHTML = `
-                        <strong>✅ Hasil Prediksi:</strong> <br><br>
-                        <span style="font-size: 1.2em;">${result.hasil_prediksi}</span>
+                        <strong>✅ Hasil Klasifikasi:</strong> <br><br>
+                        <span style="font-size: 1.2em;">${result.hasil_klasifikasi}</span>
                       `;
                       hasilBox.classList.remove("d-none", "alert-danger");
                       hasilBox.classList.add("alert-info", "animate__animated", "animate__fadeIn");
@@ -227,7 +243,7 @@
                       form.reset(); // Reset semua input form
                   } else {
                       hasilBox.innerHTML = `
-                        <strong>❌ Gagal melakukan prediksi!</strong>
+                        <strong>❌ Gagal melakukan klasifikasi!</strong>
                       `;
                       hasilBox.classList.remove("d-none", "alert-info");
                       hasilBox.classList.add("alert-danger", "animate__animated", "animate__fadeIn");
