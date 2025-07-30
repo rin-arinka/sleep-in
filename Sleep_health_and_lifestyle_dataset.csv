@@ -1,0 +1,375 @@
+ID,Jenis Kelamin,Usia,Durasi Tidur,Kualitas Tidur,Tingkat Stres,Kategori BMI,Denyut Jantung,Langkah Harian,Gangguan Tidur,Sistolik,Diastolik
+1,Perempuan,53,8.5,9,3,Normal,65,5000,Tidak Ada,125,80
+2,Laki-laki,31,6.1,6,8,Normal,72,5000,Tidak Ada,125,80
+3,Laki-laki,29,6.0,6,8,Normal,70,8000,Tidak Ada,120,80
+4,Perempuan,53,8.5,9,3,Normal,65,5000,Tidak Ada,125,80
+5,Laki-laki,32,6.0,6,8,Normal,72,5000,Tidak Ada,125,80
+6,Laki-laki,44,6.4,6,7,Overweight,72,6000,Insomnia,130,85
+7,Laki-laki,33,6.0,6,8,Normal,72,5000,Tidak Ada,125,80
+8,Perempuan,37,7.2,8,4,Normal,68,7000,Tidak Ada,115,75
+9,Perempuan,54,8.4,9,3,Normal,65,5000,Tidak Ada,125,80
+10,Laki-laki,38,7.3,8,5,Normal,68,8000,Tidak Ada,130,85
+11,Laki-laki,44,6.3,6,7,Overweight,72,6000,Insomnia,130,85
+12,Laki-laki,31,7.6,7,6,Normal,70,8000,Tidak Ada,120,80
+13,Laki-laki,39,7.2,8,5,Normal,68,8000,Tidak Ada,130,85
+14,Laki-laki,32,6.0,6,8,Normal,72,5000,Tidak Ada,125,80
+15,Laki-laki,39,7.2,8,5,Normal,68,8000,Tidak Ada,130,85
+16,Perempuan,50,6.1,6,8,Overweight,75,10000,Insomnia,140,95
+17,Laki-laki,27,6.1,6,6,Overweight,77,4200,Tidak Ada,126,83
+18,Laki-laki,44,6.3,6,7,Overweight,72,6000,Insomnia,130,85
+19,Perempuan,54,8.4,9,3,Normal,65,5000,Tidak Ada,125,80
+20,Perempuan,36,7.2,8,4,Normal,68,7000,Tidak Ada,115,75
+21,Laki-laki,29,7.8,7,6,Normal,70,8000,Tidak Ada,120,80
+22,Laki-laki,42,7.8,8,5,Normal,70,8000,Tidak Ada,130,85
+23,Laki-laki,33,6.1,6,8,Normal,72,5000,Tidak Ada,125,80
+24,Perempuan,44,6.5,7,4,Overweight,65,6000,Insomnia,135,90
+25,Perempuan,45,6.5,7,4,Overweight,65,6000,Insomnia,135,90
+26,Laki-laki,38,7.1,8,5,Normal,68,8000,Tidak Ada,130,85
+27,Laki-laki,44,6.3,6,7,Overweight,72,6000,Insomnia,130,85
+28,Laki-laki,43,6.5,6,7,Overweight,72,6000,Insomnia,130,85
+29,Laki-laki,43,6.5,6,7,Overweight,72,6000,Insomnia,130,85
+30,Perempuan,59,8.0,9,3,Overweight,68,7000,Sleep Apnea,140,95
+31,Laki-laki,30,7.9,7,6,Normal,70,8000,Tidak Ada,120,80
+32,Laki-laki,27,8.8,9,6,Normal,84,1000,Tidak Ada,125,68
+33,Laki-laki,31,7.7,7,6,Normal,70,8000,Tidak Ada,120,80
+34,Perempuan,59,8.2,9,3,Overweight,68,7000,Sleep Apnea,140,95
+35,Perempuan,50,6.0,6,8,Overweight,75,10000,Sleep Apnea,140,95
+36,Perempuan,37,7.2,8,4,Normal,68,7000,Tidak Ada,115,75
+37,Laki-laki,32,6.2,6,8,Normal,72,5000,Tidak Ada,125,80
+38,Laki-laki,30,7.7,7,6,Normal,70,8000,Tidak Ada,120,80
+39,Laki-laki,39,7.2,8,5,Normal,68,8000,Tidak Ada,130,85
+40,Laki-laki,41,7.6,8,5,Normal,70,8000,Tidak Ada,130,85
+41,Laki-laki,44,6.5,6,7,Overweight,72,6000,Tidak Ada,130,85
+42,Perempuan,50,6.1,6,8,Overweight,75,10000,Sleep Apnea,140,95
+43,Laki-laki,50,5.4,8,3,Normal,65,8000,Sleep Apnea,125,85
+44,Laki-laki,43,6.5,6,7,Overweight,72,6000,Sleep Apnea,130,85
+45,Laki-laki,37,7.4,8,5,Normal,68,8000,Tidak Ada,130,85
+46,Perempuan,37,7.2,8,4,Normal,68,7000,Tidak Ada,115,75
+47,Laki-laki,35,7.3,8,4,Normal,65,5000,Tidak Ada,125,80
+48,Laki-laki,32,7.7,7,6,Normal,70,8000,Tidak Ada,120,80
+49,Laki-laki,28,5.9,4,8,Obesitas,85,3000,Insomnia,140,90
+50,Laki-laki,31,7.8,7,6,Normal,70,8000,Tidak Ada,120,80
+51,Perempuan,57,8.2,9,3,Overweight,68,7000,Sleep Apnea,140,95
+52,Perempuan,38,7.4,7,5,Obesitas,84,3300,Sleep Apnea,135,88
+53,Perempuan,50,6.0,6,8,Overweight,75,10000,Sleep Apnea,140,95
+54,Laki-laki,58,5.8,8,3,Normal,65,8000,Sleep Apnea,125,85
+55,Perempuan,45,6.8,7,6,Overweight,65,6000,Insomnia,135,90
+56,Perempuan,57,8.2,9,3,Overweight,68,7000,Sleep Apnea,140,95
+57,Laki-laki,35,7.4,7,5,Obesitas,84,3300,Sleep Apnea,135,88
+58,Laki-laki,28,5.9,4,8,Obesitas,85,3000,Sleep Apnea,140,90
+59,Perempuan,58,8.0,9,3,Overweight,68,7000,Sleep Apnea,140,95
+60,Laki-laki,33,6.0,6,8,Normal,72,5000,Tidak Ada,125,80
+61,Laki-laki,38,7.3,8,5,Normal,68,8000,Tidak Ada,130,85
+62,Perempuan,52,6.6,7,7,Overweight,72,6000,Insomnia,130,85
+63,Laki-laki,33,6.0,6,8,Normal,72,5000,Tidak Ada,125,80
+64,Laki-laki,31,7.7,7,6,Normal,70,8000,Tidak Ada,120,80
+65,Perempuan,44,6.6,7,4,Overweight,65,6000,Insomnia,135,90
+66,Laki-laki,33,6.1,6,8,Normal,72,5000,Tidak Ada,125,80
+67,Laki-laki,44,6.3,6,7,Overweight,72,6000,Insomnia,130,85
+68,Perempuan,53,8.5,9,3,Normal,65,5000,Tidak Ada,125,80
+69,Laki-laki,43,7.7,8,5,Normal,70,8000,Tidak Ada,130,85
+70,Laki-laki,35,6.7,7,5,Overweight,70,5600,Tidak Ada,128,84
+71,Perempuan,36,7.2,8,4,Normal,68,7000,Insomnia,115,75
+72,Laki-laki,43,6.5,6,7,Overweight,72,6000,Insomnia,130,85
+73,Perempuan,52,8.4,9,3,Normal,65,5000,Tidak Ada,125,80
+74,Perempuan,50,6.1,6,8,Overweight,75,10000,Sleep Apnea,140,95
+75,Perempuan,59,8.1,9,3,Overweight,68,7000,Sleep Apnea,140,95
+76,Laki-laki,43,6.5,6,7,Overweight,72,6000,Insomnia,130,85
+77,Laki-laki,33,6.0,6,8,Normal,72,5000,Tidak Ada,125,80
+78,Laki-laki,35,7.5,8,5,Normal,70,8000,Tidak Ada,120,80
+79,Perempuan,59,8.2,9,3,Overweight,68,7000,Sleep Apnea,140,95
+80,Perempuan,29,6.5,5,7,Normal,80,4000,Sleep Apnea,132,87
+81,Laki-laki,32,7.2,8,6,Normal,68,7000,Tidak Ada,118,76
+82,Perempuan,50,6.0,6,8,Overweight,75,10000,Sleep Apnea,140,95
+83,Laki-laki,29,7.8,7,6,Normal,70,8000,Tidak Ada,120,80
+84,Laki-laki,37,7.4,8,5,Normal,68,8000,Tidak Ada,130,85
+85,Perempuan,37,7.2,8,4,Normal,68,7000,Tidak Ada,115,75
+86,Perempuan,59,8.2,9,3,Overweight,68,7000,Sleep Apnea,140,95
+87,Perempuan,53,8.3,9,3,Normal,65,5000,Tidak Ada,125,80
+88,Perempuan,49,6.2,6,8,Overweight,75,10000,Sleep Apnea,140,95
+89,Laki-laki,40,7.9,8,5,Normal,68,8000,Tidak Ada,130,85
+90,Perempuan,37,7.2,8,4,Normal,68,7000,Tidak Ada,115,75
+91,Perempuan,57,8.1,9,3,Overweight,68,7000,Sleep Apnea,140,95
+92,Laki-laki,32,6.0,6,8,Normal,72,5000,Tidak Ada,125,80
+93,Laki-laki,39,7.2,8,5,Normal,68,8000,Tidak Ada,130,85
+94,Perempuan,53,8.4,9,3,Normal,65,5000,Tidak Ada,125,80
+95,Laki-laki,44,6.3,6,7,Overweight,72,6000,Insomnia,130,85
+96,Laki-laki,44,6.3,6,7,Overweight,72,6000,Insomnia,130,85
+97,Laki-laki,38,7.1,8,5,Normal,68,8000,Tidak Ada,130,85
+98,Laki-laki,49,5.0,8,3,Normal,65,8000,Sleep Apnea,125,85
+99,Laki-laki,44,6.3,6,7,Overweight,72,6000,Insomnia,130,85
+100,Laki-laki,30,7.8,7,6,Normal,70,8000,Tidak Ada,120,80
+101,Laki-laki,43,7.8,8,5,Normal,70,8000,Insomnia,130,85
+102,Perempuan,27,9.3,9,3,Normal,90,1000,Tidak Ada,100,67
+103,Perempuan,59,8.0,9,3,Overweight,68,7000,Sleep Apnea,140,95
+104,Perempuan,45,6.6,7,4,Overweight,65,6000,Insomnia,135,90
+105,Perempuan,38,7.1,8,4,Normal,68,7000,Tidak Ada,115,75
+106,Perempuan,57,8.1,9,3,Overweight,68,7000,Sleep Apnea,140,95
+107,Perempuan,44,6.6,7,4,Overweight,65,6000,Insomnia,135,90
+108,Perempuan,59,8.1,9,3,Overweight,68,7000,Sleep Apnea,140,95
+109,Perempuan,51,8.5,9,3,Normal,65,5000,Tidak Ada,125,80
+110,Perempuan,54,8.4,9,3,Normal,65,5000,Tidak Ada,125,80
+111,Perempuan,49,6.1,6,8,Overweight,75,10000,Sleep Apnea,140,95
+112,Laki-laki,41,7.7,8,5,Normal,70,8000,Tidak Ada,130,85
+113,Laki-laki,43,6.5,6,7,Overweight,72,6000,Insomnia,130,85
+114,Laki-laki,30,7.6,7,6,Normal,70,8000,Tidak Ada,120,80
+115,Perempuan,58,8.0,9,3,Overweight,68,7000,Sleep Apnea,140,95
+116,Laki-laki,33,6.0,6,8,Normal,72,5000,Tidak Ada,125,80
+117,Laki-laki,41,7.1,7,6,Overweight,72,6000,Tidak Ada,125,82
+118,Perempuan,29,6.5,5,7,Normal,80,4000,Insomnia,132,87
+119,Laki-laki,43,6.5,6,7,Overweight,72,6000,Insomnia,130,85
+120,Perempuan,36,7.2,8,4,Normal,68,7000,Sleep Apnea,115,75
+121,Perempuan,50,6.0,6,8,Overweight,75,10000,Sleep Apnea,140,95
+122,Perempuan,37,7.2,8,4,Normal,68,7000,Tidak Ada,115,75
+123,Perempuan,58,8.0,9,3,Overweight,68,7000,Sleep Apnea,140,95
+124,Perempuan,30,6.4,5,7,Normal,78,4100,Insomnia,130,86
+125,Laki-laki,31,6.1,6,8,Normal,72,5000,Tidak Ada,125,80
+126,Laki-laki,39,7.2,8,5,Normal,68,8000,Tidak Ada,130,85
+127,Laki-laki,42,7.8,8,5,Normal,70,8000,Tidak Ada,130,85
+128,Laki-laki,41,7.1,7,6,Overweight,72,6000,Tidak Ada,125,82
+129,Perempuan,28,9.1,9,3,Normal,90,1000,Tidak Ada,100,67
+130,Laki-laki,38,7.1,8,5,Normal,68,8000,Tidak Ada,130,85
+131,Perempuan,54,8.5,9,3,Normal,65,5000,Tidak Ada,125,80
+132,Laki-laki,41,7.6,8,5,Normal,70,8000,Tidak Ada,130,85
+133,Laki-laki,32,7.7,7,6,Normal,70,8000,Tidak Ada,120,80
+134,Laki-laki,37,7.4,8,5,Normal,68,8000,Tidak Ada,130,85
+135,Perempuan,39,6.9,7,6,Normal,75,5500,Tidak Ada,128,85
+136,Laki-laki,29,6.3,6,7,Obesitas,82,3500,Insomnia,140,90
+137,Perempuan,49,6.1,6,8,Overweight,75,10000,Sleep Apnea,140,95
+138,Perempuan,45,6.5,7,4,Overweight,65,6000,Insomnia,135,90
+139,Laki-laki,29,6.1,6,8,Normal,70,8000,Tidak Ada,120,80
+140,Laki-laki,44,6.3,6,7,Overweight,72,6000,Insomnia,130,85
+141,Laki-laki,36,6.6,5,7,Overweight,74,4800,Sleep Apnea,129,84
+142,Perempuan,34,5.8,4,8,Overweight,81,5200,Sleep Apnea,131,86
+143,Laki-laki,42,7.8,8,5,Normal,70,8000,Tidak Ada,130,85
+144,Perempuan,48,5.9,6,8,Overweight,75,10000,Sleep Apnea,140,95
+145,Laki-laki,44,6.4,6,7,Overweight,72,6000,Insomnia,130,85
+146,Perempuan,50,6.1,6,8,Overweight,75,10000,Sleep Apnea,140,95
+147,Perempuan,58,8.0,9,3,Overweight,68,7000,Sleep Apnea,140,95
+148,Perempuan,54,8.4,9,3,Normal,65,5000,Tidak Ada,125,80
+149,Laki-laki,39,6.5,5,7,Overweight,80,4000,Insomnia,132,87
+150,Laki-laki,43,6.9,6,7,Normal,69,6800,Tidak Ada,117,76
+151,Laki-laki,35,7.5,8,5,Normal,70,8000,Tidak Ada,120,80
+152,Perempuan,48,5.2,8,8,Overweight,84,1000,Tidak Ada,130,85
+153,Perempuan,57,8.2,9,3,Overweight,68,7000,Sleep Apnea,140,95
+154,Perempuan,26,6.2,9,8,Normal,81,1000,Tidak Ada,93,58
+155,Perempuan,38,7.1,8,4,Normal,68,7000,Tidak Ada,115,75
+156,Perempuan,50,6.1,6,8,Overweight,75,10000,Sleep Apnea,140,95
+157,Perempuan,36,7.1,8,4,Normal,68,7000,Tidak Ada,115,75
+158,Perempuan,53,8.5,9,3,Normal,65,5000,Tidak Ada,125,80
+159,Perempuan,33,6.2,6,6,Overweight,76,5500,Tidak Ada,128,85
+160,Laki-laki,30,7.7,7,6,Normal,70,8000,Tidak Ada,120,80
+161,Laki-laki,31,7.6,7,6,Normal,70,8000,Tidak Ada,120,80
+162,Laki-laki,48,5.1,8,3,Normal,65,8000,Sleep Apnea,125,85
+163,Perempuan,37,7.2,8,4,Normal,68,7000,Tidak Ada,115,75
+164,Laki-laki,33,6.0,6,8,Normal,72,5000,Insomnia,125,80
+165,Laki-laki,41,7.6,8,5,Normal,70,8000,Insomnia,130,85
+166,Perempuan,52,6.6,7,7,Overweight,72,6000,Insomnia,130,85
+167,Perempuan,50,6.1,6,8,Overweight,75,10000,Sleep Apnea,140,95
+168,Laki-laki,41,7.7,8,5,Normal,70,8000,Tidak Ada,130,85
+169,Perempuan,37,7.5,8,4,Normal,70,8000,Tidak Ada,120,80
+170,Laki-laki,39,7.2,8,5,Normal,68,8000,Insomnia,130,85
+171,Laki-laki,43,7.7,8,5,Normal,70,8000,Tidak Ada,130,85
+172,Laki-laki,35,7.2,8,4,Normal,65,5000,Tidak Ada,125,80
+173,Perempuan,57,8.1,9,3,Overweight,68,7000,Sleep Apnea,140,95
+174,Laki-laki,42,7.8,8,5,Normal,70,8000,Tidak Ada,130,85
+175,Perempuan,52,8.4,9,3,Normal,65,5000,Tidak Ada,125,80
+176,Laki-laki,42,6.5,6,7,Overweight,72,6000,Insomnia,130,85
+177,Perempuan,50,6.0,6,8,Overweight,75,10000,Tidak Ada,140,95
+178,Laki-laki,24,7.1,7,8,Overweight,84,1000,Sleep Apnea,105,90
+179,Perempuan,45,6.6,7,4,Overweight,65,6000,Tidak Ada,135,90
+180,Perempuan,50,6.0,6,8,Overweight,75,10000,Sleep Apnea,140,95
+181,Perempuan,45,5.6,8,8,Overweight,84,1000,Tidak Ada,130,85
+182,Laki-laki,38,7.3,8,5,Normal,68,8000,Tidak Ada,130,85
+183,Laki-laki,31,7.6,7,6,Normal,70,8000,Tidak Ada,120,80
+184,Laki-laki,29,7.8,7,6,Normal,70,8000,Tidak Ada,120,80
+185,Perempuan,44,6.5,7,4,Overweight,65,6000,Insomnia,135,90
+186,Perempuan,42,6.8,6,7,Overweight,78,5000,Sleep Apnea,130,85
+187,Perempuan,51,6.1,6,8,Overweight,75,10000,Sleep Apnea,140,95
+188,Perempuan,37,7.2,8,4,Normal,68,7000,Tidak Ada,115,75
+189,Laki-laki,42,7.8,8,5,Normal,70,8000,Tidak Ada,130,85
+190,Laki-laki,44,6.3,6,7,Overweight,72,6000,Insomnia,130,85
+191,Perempuan,44,6.6,7,4,Overweight,65,6000,Insomnia,135,90
+192,Perempuan,37,7.2,8,4,Normal,68,7000,Tidak Ada,115,75
+193,Perempuan,58,8.0,9,3,Overweight,68,7000,Sleep Apnea,140,95
+194,Perempuan,59,8.2,9,3,Overweight,68,7000,Sleep Apnea,140,95
+195,Laki-laki,48,7.3,7,5,Obesitas,83,3500,Insomnia,142,92
+196,Perempuan,54,8.4,9,3,Normal,65,5000,Tidak Ada,125,80
+197,Laki-laki,40,7.9,8,5,Normal,68,8000,Tidak Ada,130,85
+198,Perempuan,44,6.6,7,4,Overweight,65,6000,Insomnia,135,90
+199,Perempuan,38,7.1,8,4,Normal,68,7000,Tidak Ada,115,75
+200,Laki-laki,39,7.2,8,5,Normal,68,8000,Tidak Ada,130,85
+201,Laki-laki,43,6.5,6,7,Overweight,72,6000,Insomnia,130,85
+202,Laki-laki,43,6.5,6,7,Overweight,72,6000,Insomnia,130,85
+203,Perempuan,59,8.1,9,3,Overweight,68,7000,Sleep Apnea,140,95
+204,Laki-laki,28,6.2,6,8,Normal,75,10000,Tidak Ada,125,80
+205,Perempuan,50,6.1,6,8,Overweight,75,10000,Sleep Apnea,140,95
+206,Perempuan,27,6.2,9,8,Normal,81,1000,Tidak Ada,93,58
+207,Laki-laki,43,7.8,8,5,Normal,70,8000,Tidak Ada,130,85
+208,Laki-laki,43,7.8,8,5,Normal,70,8000,Tidak Ada,130,85
+209,Laki-laki,30,7.8,7,6,Normal,70,8000,Tidak Ada,120,80
+210,Perempuan,37,7.2,8,4,Normal,68,7000,Tidak Ada,115,75
+211,Perempuan,50,6.0,6,8,Overweight,75,10000,Sleep Apnea,140,95
+212,Perempuan,49,6.0,6,8,Overweight,75,10000,Sleep Apnea,140,95
+213,Perempuan,53,8.5,9,3,Normal,65,5000,Tidak Ada,125,80
+214,Perempuan,38,7.1,8,4,Normal,68,7000,Tidak Ada,115,75
+215,Laki-laki,33,6.0,6,8,Normal,72,5000,Tidak Ada,125,80
+216,Perempuan,51,8.5,9,3,Normal,65,5000,Tidak Ada,125,80
+217,Laki-laki,30,7.9,7,6,Normal,70,8000,Tidak Ada,120,80
+218,Laki-laki,35,6.7,7,5,Overweight,70,5600,Tidak Ada,128,84
+219,Perempuan,52,6.5,7,7,Overweight,72,6000,Insomnia,130,85
+220,Laki-laki,37,7.8,8,4,Normal,68,7000,Tidak Ada,120,80
+221,Laki-laki,44,6.4,6,7,Overweight,72,6000,Insomnia,130,85
+222,Perempuan,53,8.5,9,3,Normal,65,5000,Tidak Ada,125,80
+223,Perempuan,38,7.1,8,4,Normal,68,7000,Tidak Ada,115,75
+224,Perempuan,42,6.8,6,7,Overweight,78,5000,Sleep Apnea,130,85
+225,Perempuan,51,6.1,6,8,Overweight,75,10000,Sleep Apnea,140,95
+226,Laki-laki,31,7.7,7,6,Normal,70,8000,Tidak Ada,120,80
+227,Perempuan,56,8.2,9,3,Normal,65,10000,Tidak Ada,118,75
+228,Laki-laki,32,6.2,6,8,Normal,72,5000,Tidak Ada,125,80
+229,Laki-laki,24,7.2,7,8,Overweight,84,1000,Sleep Apnea,105,90
+230,Perempuan,35,7.2,8,4,Normal,68,7000,Tidak Ada,115,75
+231,Perempuan,43,6.7,7,4,Overweight,65,6000,Insomnia,135,90
+232,Laki-laki,33,6.1,6,8,Normal,72,5000,Tidak Ada,125,80
+233,Laki-laki,39,7.2,8,5,Normal,68,8000,Tidak Ada,130,85
+234,Laki-laki,29,6.1,6,8,Normal,70,8000,Tidak Ada,120,80
+235,Laki-laki,31,6.1,6,8,Normal,72,5000,Tidak Ada,125,80
+236,Laki-laki,30,7.9,7,6,Normal,70,8000,Tidak Ada,120,80
+237,Laki-laki,41,7.7,8,5,Normal,70,8000,Tidak Ada,130,85
+238,Perempuan,38,7.1,8,4,Normal,68,7000,Tidak Ada,115,75
+239,Perempuan,51,8.5,9,3,Normal,65,5000,Tidak Ada,125,80
+240,Laki-laki,44,6.8,7,7,Overweight,78,5000,Insomnia,130,85
+241,Perempuan,39,8.0,9,3,Normal,67,7500,Tidak Ada,115,78
+242,Perempuan,44,6.6,7,4,Overweight,65,6000,Insomnia,135,90
+243,Laki-laki,44,6.4,6,7,Overweight,72,6000,Insomnia,130,85
+244,Laki-laki,38,7.3,8,5,Normal,68,8000,Tidak Ada,130,85
+245,Laki-laki,44,6.4,6,7,Overweight,72,6000,Tidak Ada,130,85
+246,Laki-laki,32,7.5,8,3,Normal,70,8000,Tidak Ada,120,80
+247,Perempuan,44,6.5,7,4,Overweight,65,6000,Insomnia,135,90
+248,Laki-laki,49,8.1,9,3,Obesitas,86,3700,Sleep Apnea,139,91
+249,Perempuan,36,7.1,8,4,Normal,68,7000,Tidak Ada,115,75
+250,Perempuan,50,6.0,6,8,Overweight,75,10000,Sleep Apnea,140,95
+251,Laki-laki,42,7.8,8,5,Normal,70,8000,Tidak Ada,130,85
+252,Laki-laki,43,7.6,8,4,Overweight,68,6800,Tidak Ada,122,80
+253,Perempuan,37,7.2,8,4,Normal,68,7000,Tidak Ada,115,75
+254,Laki-laki,31,7.7,7,6,Normal,70,8000,Tidak Ada,120,80
+255,Laki-laki,35,7.3,8,4,Normal,65,5000,Tidak Ada,125,80
+256,Perempuan,50,6.0,6,8,Overweight,75,10000,Sleep Apnea,140,95
+257,Laki-laki,43,7.7,8,5,Normal,70,8000,Tidak Ada,130,85
+258,Perempuan,45,6.5,7,4,Overweight,65,6000,Insomnia,135,90
+259,Perempuan,58,8.0,9,3,Overweight,68,7000,Sleep Apnea,140,95
+260,Laki-laki,28,5.9,4,8,Obesitas,85,3000,Sleep Apnea,140,90
+261,Perempuan,45,6.6,7,4,Overweight,65,6000,Insomnia,135,90
+262,Perempuan,54,8.4,9,3,Normal,65,5000,Tidak Ada,125,80
+263,Perempuan,36,7.2,8,4,Normal,68,7000,Tidak Ada,115,75
+264,Perempuan,44,6.6,7,4,Overweight,65,6000,Insomnia,135,90
+265,Perempuan,53,8.4,9,3,Normal,65,5000,Tidak Ada,125,80
+266,Laki-laki,43,7.8,8,5,Normal,70,8000,Tidak Ada,130,85
+267,Laki-laki,41,7.7,8,5,Normal,70,8000,Tidak Ada,130,85
+268,Perempuan,36,7.1,8,4,Normal,68,7000,Tidak Ada,115,75
+269,Laki-laki,43,7.8,8,5,Normal,70,8000,Tidak Ada,130,85
+270,Laki-laki,32,6.0,6,8,Normal,72,5000,Tidak Ada,125,80
+271,Laki-laki,31,7.8,7,6,Normal,70,8000,Tidak Ada,120,80
+272,Perempuan,31,7.9,8,4,Normal,69,6800,Tidak Ada,117,76
+273,Perempuan,49,5.2,8,8,Overweight,84,1000,Tidak Ada,130,85
+274,Laki-laki,43,6.5,6,7,Overweight,72,6000,Insomnia,130,85
+275,Perempuan,53,8.4,9,3,Normal,65,5000,Tidak Ada,125,80
+276,Laki-laki,30,7.9,7,6,Normal,70,8000,Tidak Ada,120,80
+277,Laki-laki,26,7.1,7,8,Overweight,84,1000,Sleep Apnea,105,90
+278,Perempuan,44,6.6,7,4,Overweight,65,6000,Insomnia,135,90
+279,Perempuan,45,6.6,7,4,Overweight,65,6000,Insomnia,135,90
+280,Perempuan,40,7.2,8,6,Normal,73,7300,Tidak Ada,119,77
+281,Perempuan,53,8.5,9,3,Normal,65,5000,Tidak Ada,125,80
+282,Perempuan,38,7.1,8,4,Normal,68,7000,Tidak Ada,115,75
+283,Laki-laki,32,6.2,6,8,Normal,72,5000,Tidak Ada,125,80
+284,Laki-laki,38,7.3,8,5,Normal,68,8000,Tidak Ada,130,85
+285,Laki-laki,38,7.3,8,5,Normal,68,8000,Tidak Ada,130,85
+286,Laki-laki,29,7.8,7,6,Normal,70,8000,Tidak Ada,120,80
+287,Laki-laki,32,6.2,6,8,Normal,72,5000,Tidak Ada,125,80
+288,Laki-laki,29,6.0,6,8,Normal,70,8000,Tidak Ada,120,80
+289,Laki-laki,39,7.2,8,5,Normal,68,8000,Tidak Ada,130,85
+290,Laki-laki,31,7.7,7,6,Normal,70,8000,Tidak Ada,120,80
+291,Perempuan,56,8.2,9,3,Normal,65,10000,Tidak Ada,118,75
+292,Perempuan,51,8.5,9,3,Normal,65,5000,Tidak Ada,125,80
+293,Laki-laki,43,7.8,8,5,Normal,70,8000,Tidak Ada,130,85
+294,Perempuan,50,8.3,9,3,Normal,65,5000,Tidak Ada,125,80
+295,Perempuan,53,8.4,9,3,Normal,65,5000,Tidak Ada,125,80
+296,Laki-laki,44,6.4,6,7,Overweight,72,6000,Insomnia,130,85
+297,Laki-laki,43,7.7,8,5,Normal,70,8000,Tidak Ada,130,85
+298,Laki-laki,43,7.8,8,5,Normal,70,8000,Tidak Ada,130,85
+299,Perempuan,50,6.0,6,8,Overweight,75,10000,Sleep Apnea,140,95
+300,Perempuan,55,8.1,9,4,Overweight,72,5000,Sleep Apnea,140,95
+301,Perempuan,45,6.8,7,6,Overweight,65,6000,Insomnia,135,90
+302,Perempuan,59,8.0,9,3,Overweight,68,7000,Sleep Apnea,140,95
+303,Perempuan,55,8.1,9,4,Overweight,72,5000,Sleep Apnea,140,95
+304,Perempuan,51,6.0,6,8,Overweight,75,10000,Sleep Apnea,140,95
+305,Perempuan,49,6.1,6,8,Overweight,75,10000,Sleep Apnea,140,95
+306,Laki-laki,43,7.8,8,5,Normal,70,8000,Insomnia,130,85
+307,Perempuan,40,7.2,8,6,Normal,73,7300,Tidak Ada,119,77
+308,Laki-laki,31,7.8,7,6,Normal,70,8000,Tidak Ada,120,80
+309,Laki-laki,43,7.8,8,5,Normal,70,8000,Tidak Ada,130,85
+310,Perempuan,43,6.7,7,4,Overweight,65,6000,Insomnia,135,90
+311,Perempuan,52,6.6,7,7,Overweight,72,6000,Insomnia,130,85
+312,Perempuan,45,6.6,7,4,Overweight,65,6000,Insomnia,135,90
+313,Laki-laki,36,6.6,5,7,Overweight,74,4800,Insomnia,129,84
+314,Laki-laki,32,7.6,7,6,Normal,70,8000,Tidak Ada,120,80
+315,Laki-laki,28,6.2,6,8,Normal,75,10000,Tidak Ada,125,80
+316,Laki-laki,59,5.7,8,3,Normal,65,8000,Sleep Apnea,125,85
+317,Perempuan,34,5.8,4,8,Overweight,81,5200,Sleep Apnea,131,86
+318,Laki-laki,43,7.7,8,5,Normal,70,8000,Tidak Ada,130,85
+319,Laki-laki,31,7.7,7,6,Normal,70,8000,Tidak Ada,120,80
+320,Perempuan,45,6.9,7,5,Overweight,75,5500,Tidak Ada,125,82
+321,Laki-laki,35,7.3,8,4,Normal,65,5000,Tidak Ada,125,80
+322,Laki-laki,32,6.0,6,8,Normal,72,5000,Tidak Ada,125,80
+323,Laki-laki,48,7.3,7,5,Obesitas,83,3500,Insomnia,142,92
+324,Laki-laki,44,6.3,6,7,Overweight,72,6000,Insomnia,130,85
+325,Laki-laki,29,6.0,6,8,Normal,70,8000,Tidak Ada,120,80
+326,Perempuan,53,8.3,9,3,Normal,65,5000,Insomnia,125,80
+327,Laki-laki,27,8.3,9,6,Normal,84,1000,Tidak Ada,125,68
+328,Laki-laki,30,7.2,7,8,Overweight,84,1000,Sleep Apnea,105,90
+329,Laki-laki,41,7.3,8,6,Normal,72,6200,Tidak Ada,121,79
+330,Perempuan,53,8.3,9,3,Normal,65,5000,Tidak Ada,125,80
+331,Perempuan,59,8.0,9,3,Overweight,68,7000,Sleep Apnea,140,95
+332,Laki-laki,38,7.3,8,5,Normal,68,8000,Tidak Ada,130,85
+333,Perempuan,52,6.5,7,7,Overweight,72,6000,Insomnia,130,85
+334,Perempuan,59,8.0,9,3,Overweight,68,7000,Tidak Ada,140,95
+335,Perempuan,53,8.4,9,3,Normal,65,5000,Tidak Ada,125,80
+336,Perempuan,44,6.5,7,4,Overweight,65,6000,Insomnia,135,90
+337,Laki-laki,32,6.0,6,8,Normal,72,5000,Tidak Ada,125,80
+338,Laki-laki,32,7.5,8,3,Normal,70,8000,Tidak Ada,120,80
+339,Laki-laki,41,7.6,8,5,Normal,70,8000,Tidak Ada,130,85
+340,Laki-laki,43,6.5,6,7,Overweight,72,6000,Insomnia,130,85
+341,Perempuan,59,8.1,9,3,Overweight,68,7000,Sleep Apnea,140,95
+342,Laki-laki,43,6.3,6,7,Overweight,72,6000,Insomnia,130,85
+343,Laki-laki,41,7.7,8,5,Normal,70,8000,Tidak Ada,130,85
+344,Laki-laki,32,6.0,6,8,Normal,72,5000,Tidak Ada,125,80
+345,Laki-laki,31,7.7,7,6,Normal,70,8000,Tidak Ada,120,80
+346,Perempuan,57,8.2,9,3,Overweight,68,7000,Sleep Apnea,140,95
+347,Laki-laki,44,6.3,6,7,Overweight,72,6000,Insomnia,130,85
+348,Perempuan,45,6.5,7,4,Overweight,65,6000,Insomnia,135,90
+349,Laki-laki,30,7.7,7,6,Normal,70,8000,Tidak Ada,120,80
+350,Perempuan,52,8.4,9,3,Normal,65,5000,Tidak Ada,125,80
+351,Laki-laki,39,7.2,8,5,Normal,68,8000,Tidak Ada,130,85
+352,Laki-laki,49,8.1,9,3,Obesitas,86,3700,Sleep Apnea,139,91
+353,Laki-laki,43,6.4,6,7,Overweight,72,6000,Insomnia,130,85
+354,Perempuan,50,6.0,6,8,Overweight,75,10000,Sleep Apnea,140,95
+355,Perempuan,57,8.1,9,3,Overweight,68,7000,Tidak Ada,140,95
+356,Perempuan,45,6.6,7,4,Overweight,65,6000,Insomnia,135,90
+357,Perempuan,52,6.6,7,7,Overweight,72,6000,Insomnia,130,85
+358,Perempuan,39,8.0,9,3,Normal,67,7500,Tidak Ada,115,78
+359,Perempuan,38,7.1,8,4,Normal,68,7000,Tidak Ada,115,75
+360,Laki-laki,39,7.2,8,5,Normal,68,8000,Tidak Ada,130,85
+361,Perempuan,59,8.1,9,3,Overweight,68,7000,Tidak Ada,140,95
+362,Perempuan,36,7.1,8,4,Normal,68,7000,Tidak Ada,115,75
+363,Laki-laki,35,7.2,8,4,Normal,65,5000,Tidak Ada,125,80
+364,Perempuan,53,8.5,9,3,Normal,65,5000,Tidak Ada,125,80
+365,Laki-laki,43,7.8,8,5,Normal,70,8000,Tidak Ada,130,85
+366,Perempuan,37,7.2,8,4,Normal,68,7000,Tidak Ada,115,75
+367,Perempuan,59,8.1,9,3,Overweight,68,7000,Sleep Apnea,140,95
+368,Laki-laki,30,7.7,7,6,Normal,70,8000,Tidak Ada,120,80
+369,Perempuan,43,6.7,7,4,Overweight,65,6000,Insomnia,135,90
+370,Laki-laki,33,6.1,6,8,Normal,72,5000,Tidak Ada,125,80
+371,Perempuan,37,6.1,6,6,Overweight,77,4200,Tidak Ada,126,83
+372,Perempuan,49,6.1,6,8,Overweight,75,10000,Sleep Apnea,140,95
+373,Perempuan,57,8.2,9,3,Overweight,68,7000,Sleep Apnea,140,95
+374,Perempuan,36,7.2,8,4,Normal,68,7000,Tidak Ada,115,75
